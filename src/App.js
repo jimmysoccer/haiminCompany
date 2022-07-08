@@ -1,24 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import { HOME_PAGE, ABOUT_PAGE, PRODUCT_PAGE } from "./constants/navBar";
+import { useState } from "react";
+import Product from "./pages/Product";
 
 function App() {
+  const [currentNavBar, setCurrentNavBar] = useState(HOME_PAGE);
+
+  function NavBar() {
+    return (
+      <view>
+        <ul>
+          <li
+            className={currentNavBar === HOME_PAGE ? "active" : ""}
+            onClick={(e) => {
+              setCurrentNavBar(HOME_PAGE);
+            }}
+          >
+            主页
+          </li>
+          <li
+            className={currentNavBar === PRODUCT_PAGE ? "active" : ""}
+            onClick={(e) => {
+              setCurrentNavBar(PRODUCT_PAGE);
+            }}
+          >
+            产品
+          </li>
+          <li
+            className={currentNavBar === ABOUT_PAGE ? "active" : ""}
+            onClick={(e) => {
+              setCurrentNavBar(ABOUT_PAGE);
+            }}
+          >
+            联系我们
+          </li>
+        </ul>
+      </view>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <NavBar></NavBar>
       </header>
-    </div>
+      <body>
+        {currentNavBar === HOME_PAGE ? (
+          <Home />
+        ) : currentNavBar === ABOUT_PAGE ? (
+          <About />
+        ) : currentNavBar === PRODUCT_PAGE ? (
+          <Product />
+        ) : (
+          <view>404 ERROR</view>
+        )}
+      </body>
+    </>
   );
 }
 
