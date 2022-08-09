@@ -1,6 +1,6 @@
 import "./index.css";
 
 function Home() {
-  return <view className="index">上海海民公司</view>;
+  return <view className="index">海运公司Template</view>;
 }
 export default Home;
