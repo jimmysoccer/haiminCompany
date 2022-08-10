@@ -1,3 +1,8 @@
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
 ul {
   list-style-type: none;
   margin: 0;
@@ -5,25 +10,26 @@ ul {
   overflow: hidden;
   background-color: #333;
   height: 49.6px;
+  display: flex;
 }
 
 li {
   float: left;
-  border-right:1px solid #bbb;
+  border-right: 1px solid #bbb;
   display: block;
   color: white;
   height: 100%;
+  width: 5%;
   text-align: center;
   padding: 14px 16px;
   cursor: pointer;
   text-decoration: none;
 }
 
-
 li:hover:not(.active) {
   background-color: #111;
 }
 
 .active {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
 }
