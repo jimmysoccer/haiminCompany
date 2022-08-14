@@ -7,7 +7,6 @@ import Product from "./pages/Product";
 
 function App() {
   const [currentNavBar, setCurrentNavBar] = useState(HOME_PAGE);
-
   function NavBar() {
     return (
       <ul>

@@ -1,8 +1,10 @@
 .index {
-  line-height: 500px;
-  position: absolute;
+  position: relative;
   height: 500px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
 }
 .test {
