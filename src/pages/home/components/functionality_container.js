@@ -22,7 +22,7 @@ export const FunctionalityContainer = () => {
           <Grid
             item
             md={4}
-            className="container d-flex flex-column justify-content-center"
+            className="container m-0 d-flex flex-column justify-content-center"
           >
             <h3 className="fs-4 fw-bold ">List 1</h3>
             <p className="fs-6 fw-bold">
@@ -39,7 +39,7 @@ export const FunctionalityContainer = () => {
             item
             xs={12}
             md={4}
-            className="container d-flex flex-column justify-content-center"
+            className="container m-0 d-flex flex-column justify-content-center"
           >
             <h3 className="fs-4 fw-bold ">List 2</h3>
             <p className="fs-6 fw-bold">
