@@ -1,7 +1,7 @@
 import { Rating, Typography } from "@mui/material";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import "./index.css";
+import "../index.css";
 
 function Home() {
   const [rate, setRate] = useState(0);
