@@ -1,7 +1,7 @@
 import computerScreen from "./computer-screen.svg";
 import intranet from "./intranet-technical.svg";
 import logo from "./logo.jpg";
-import company from "./company.jfif";
+import company from "./company.jpg";
 import wave from "./wave.svg";
 
 export const computerScreenIcon = computerScreen;

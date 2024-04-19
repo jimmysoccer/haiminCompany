@@ -16,16 +16,11 @@ export const ProjectsContainer = () => {
             md={6}
             className="w-50 p-3 my-5 border bg-white shadow rounded"
           >
-            <p className="fs-5 fw-bold m-0">P1</p>
+            <p className="fs-5 fw-bold m-0">项目1</p>
             <div className="d-flex justify-content-center">
-              <p className="p-2">
-                Our experience has been nothing but positive. Their support team
-                is quick to address our tickets and overall their leadership
-                team has been very supportive in providing guidance and best
-                practices to support our goals.
-              </p>
+              <p className="p-2">项目具体大概信息</p>
             </div>
-            <p className="fs-5 fw-bold">Location, Date</p>
+            <p className="fs-5 fw-bold">深圳, 5月1日</p>
           </Grid>
         </Grid>
         <Grid container justifyContent={"center"}>
@@ -35,16 +30,11 @@ export const ProjectsContainer = () => {
             md={6}
             className="w-50 p-3 mb-5 border bg-white shadow rounded"
           >
-            <p className="fs-5 fw-bold m-0">P1</p>
+            <p className="fs-5 fw-bold m-0">项目2</p>
             <div className="d-flex justify-content-center">
-              <p className="p-2">
-                Our experience has been nothing but positive. Their support team
-                is quick to address our tickets and overall their leadership
-                team has been very supportive in providing guidance and best
-                practices to support our goals.
-              </p>
+              <p className="p-2">项目具体大概信息</p>
             </div>
-            <p className="fs-5 fw-bold">Location, Date</p>
+            <p className="fs-5 fw-bold">上海, 2月1日</p>
           </Grid>
         </Grid>
       </Grid>

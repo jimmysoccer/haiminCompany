@@ -9,26 +9,22 @@ export const FooterContainer = () => {
       <div className="w-100 h-1 border mt-5"></div>
       <Grid container justifyContent={"center"}>
         <Grid item md={3} margin={2}>
-          <p className="fs-5 fw-bold">Headquarters</p>
-          <p>CHN shanghai jiading</p>
+          <p className="fs-5 fw-bold">地址</p>
+          <p>上海市XXXXX</p>
         </Grid>
         <Grid item md={3} margin={2}>
-          <p className="fs-5 fw-bold">Contact</p>
-          <p className="m-0">example@email.com</p>
-          <p className="m-0">telephone</p>
+          <p className="fs-5 fw-bold">联系我们</p>
+          <p className="m-0">邮箱@email.com</p>
+          <p className="m-0">电话</p>
         </Grid>
         <Grid item md={3} margin={2}>
-          <p className="fs-5 fw-bold">About</p>
-          <p>
-            Axero is a technology company that builds digital workplace and
-            intranet software for employee-centric organizations around the
-            world.
-          </p>
+          <p className="fs-5 fw-bold">关于我们</p>
+          <p>海民科技是一家专业的数据库建造和软件开发公司</p>
         </Grid>
       </Grid>
       <div className="w-100 h-1 border mb-5"></div>
       <Grid container justifyContent={"center"}>
-        haimin company ©
+        海民科技 ©
       </Grid>
     </div>
   );
