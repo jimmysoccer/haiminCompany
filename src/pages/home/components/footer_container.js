@@ -6,7 +6,7 @@ export const FooterContainer = () => {
       className="text-center py-5 text-white"
       style={{ backgroundColor: "rgb(58,12,87)" }}
     >
-      <div className="w-100 h-1 border"></div>
+      <div className="w-100 h-1 border mt-5"></div>
       <Grid container justifyContent={"center"}>
         <Grid item md={3} margin={2}>
           <p className="fs-5 fw-bold">Headquarters</p>
@@ -25,6 +25,10 @@ export const FooterContainer = () => {
             world.
           </p>
         </Grid>
+      </Grid>
+      <div className="w-100 h-1 border mb-5"></div>
+      <Grid container justifyContent={"center"}>
+        haimin company ©
       </Grid>
     </div>
   );

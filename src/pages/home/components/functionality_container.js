@@ -4,11 +4,8 @@ import { computerScreenIcon, intranetIcon } from "../../../imgs/image";
 export const FunctionalityContainer = () => {
   return (
     <div className="bg-primary-subtle">
-      <div className="container text-center">
-        <h3 className="fs-6 pt-5">A single source of truth</h3>
-        <h1 className="fs-2 fw-bold pt-2 pb-5">
-          Document conversations and make them searchable
-        </h1>
+      <div className="container text-center pb-5">
+        <h1 className="fs-2 fw-bold pt-5 pb-5">专业数据库与软件解决方案</h1>
         <Grid container justifyContent={"center"} padding={2}>
           <Grid item xs={12} md={4} className="d-flex justify-content-center">
             <div className="container">

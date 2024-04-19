@@ -13,14 +13,17 @@ export const IntroductionContainer = () => {
           xs={12}
           sm={12}
           md={6}
+          columnSpacing={2}
           className="container d-flex flex-column justify-content-center"
         >
-          <h3>haiming company</h3>
-          <h1>Unify teams and accelerate growth</h1>
+          <h3>上海海民科技有限公司</h3>
+          <h1 className="my-3">构建智能、高效的IT基础设施</h1>
+          <p className="mt-2">
+            作为一家专业的数据库建造和软件开发公司,海民科技致力于为客户提供高效、可靠的IT解决方案。
+          </p>
           <p>
-            Keep your team connected and share knowledge in a central, instantly
-            searchable hub. Unify all your people, conversations, and documents
-            in one easy-to-navigate platform.
+            自成立以来,我们已经成功地为众多企业和机构提供了定制化的技术服务，
+            帮助他们实现业务目标，提升竞争力。
           </p>
           <div className="w-100">
             <img src={waveIcon} alt="wave"></img>
