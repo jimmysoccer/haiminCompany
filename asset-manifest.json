@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/haiminCompany/static/css/main.850f452d.css",
+    "main.js": "/haiminCompany/static/js/main.63f9bced.js",
+    "static/js/787.6262df26.chunk.js": "/haiminCompany/static/js/787.6262df26.chunk.js",
+    "static/media/intranet-technical.svg": "/haiminCompany/static/media/intranet-technical.3c3fa83b30e1ecf0843ac39a1444c283.svg",
+    "static/media/wave.svg": "/haiminCompany/static/media/wave.da1f5beefe4faafad9949ba51d193e42.svg",
+    "static/media/company.jpg": "/haiminCompany/static/media/company.7909ca3d93bae63d3321.jpg",
+    "static/media/computer-screen.svg": "/haiminCompany/static/media/computer-screen.2d54460e26bb77a677a8bf186d9400a0.svg",
+    "index.html": "/haiminCompany/index.html",
+    "main.850f452d.css.map": "/haiminCompany/static/css/main.850f452d.css.map",
+    "main.63f9bced.js.map": "/haiminCompany/static/js/main.63f9bced.js.map",
+    "787.6262df26.chunk.js.map": "/haiminCompany/static/js/787.6262df26.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.850f452d.css",
+    "static/js/main.63f9bced.js"
+  ]
+}
