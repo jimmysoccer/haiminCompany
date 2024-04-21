@@ -1,5 +1,7 @@
 import { Grid } from "@mui/material";
 import { companyIcon, logoIcon, waveIcon } from "../../../imgs/image";
+import Lottie from "lottie-react";
+import bankAnimation from "../../../assets/bank.json";
 
 export const IntroductionContainer = () => {
   return (
@@ -35,6 +37,10 @@ export const IntroductionContainer = () => {
           </div>
         </Grid>
       </Grid>
+      <Lottie
+        animationData={bankAnimation}
+        className="w-50 d-flex justify-content-center l-50"
+      ></Lottie>
     </div>
   );
 };
