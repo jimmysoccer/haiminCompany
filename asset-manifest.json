@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/haiminCompany/static/css/main.fd0f8f97.css",
-    "main.js": "/haiminCompany/static/js/main.d0798a77.js",
+    "main.js": "/haiminCompany/static/js/main.bf759cfa.js",
     "static/js/787.6262df26.chunk.js": "/haiminCompany/static/js/787.6262df26.chunk.js",
     "static/media/intranet-technical.svg": "/haiminCompany/static/media/intranet-technical.3c3fa83b30e1ecf0843ac39a1444c283.svg",
     "static/media/wave.svg": "/haiminCompany/static/media/wave.da1f5beefe4faafad9949ba51d193e42.svg",
@@ -9,11 +9,11 @@
     "static/media/computer-screen.svg": "/haiminCompany/static/media/computer-screen.2d54460e26bb77a677a8bf186d9400a0.svg",
     "index.html": "/haiminCompany/index.html",
     "main.fd0f8f97.css.map": "/haiminCompany/static/css/main.fd0f8f97.css.map",
-    "main.d0798a77.js.map": "/haiminCompany/static/js/main.d0798a77.js.map",
+    "main.bf759cfa.js.map": "/haiminCompany/static/js/main.bf759cfa.js.map",
     "787.6262df26.chunk.js.map": "/haiminCompany/static/js/787.6262df26.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fd0f8f97.css",
-    "static/js/main.d0798a77.js"
+    "static/js/main.bf759cfa.js"
   ]
 }
