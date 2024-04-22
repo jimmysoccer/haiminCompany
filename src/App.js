@@ -159,6 +159,7 @@ function App() {
 
       <Routes>
         <Route path={NAV_MENU[0].path} element={<Home />}></Route>
+        <Route path={"/haiminCompany"} element={<Home />}></Route>
         <Route path={NAV_MENU[1].path} element={<About />}></Route>
         <Route path={NAV_MENU[2].path} element={<Projects />}></Route>
         <Route path={NAV_MENU[2].path + "/:id"} element={<Project />}></Route>
