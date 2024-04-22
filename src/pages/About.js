@@ -1,5 +1,9 @@
-import "./index.css";
+import { FunctionalityContainer } from "./home/components/functionality_container";
 
 export default function About() {
-  return <view className="index">联系我们</view>;
+  return (
+    <div>
+      <FunctionalityContainer />
+    </div>
+  );
 }

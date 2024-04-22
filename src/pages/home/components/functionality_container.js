@@ -1,6 +1,8 @@
 import { Grid } from "@mui/material";
-import { computerScreenIcon, intranetIcon } from "../../../imgs/image";
-
+import { computerScreenIcon } from "../../../imgs/image";
+import LooksOneRoundedIcon from "@mui/icons-material/LooksOneRounded";
+import LooksTwoRoundedIcon from "@mui/icons-material/LooksTwoRounded";
+import Looks3RoundedIcon from "@mui/icons-material/Looks3Rounded";
 export const FunctionalityContainer = () => {
   return (
     <div className="bg-primary-subtle">
@@ -26,24 +28,36 @@ export const FunctionalityContainer = () => {
             md={4}
             className="container mx-5 d-flex flex-column justify-content-center"
           >
-            <h3 className="fs-4 fw-bold ">我们的使命</h3>
-            <p className="fs-6 fw-bold">
-              我们的使命是通过创新和卓越的技术解决方案，帮助客户解决复杂的业务挑战，实现长期的成功和增长。
-            </p>
-            <h3 className="fs-4 fw-bold ">我们的团队</h3>
-            <p className="fs-6 fw-bold">
-              拥有一支充满激情和专业知识的团队,包括数据库专家、软件开发工程师、项目经理和IT咨询顾问。
-              我们的团队成员经验丰富，技能全面，能够灵活应对各种项目需求。
-            </p>
-            <h3 className="fs-4 fw-bold ">我们的服务</h3>
-            <p className="fs-6 fw-bold">
-              我们提供全面的服务，包括数据库设计与建设、软件开发与定制、数据迁移和优化等。
-              无论您是需要建立一个全新的数据库系统，还是寻找定制化的软件解决方案，
-              [公司名称]都能为您提供专业的帮助和支持。
-            </p>
+            <div className="d-flex justify-content-start">
+              <div className="w-25">
+                <LooksOneRoundedIcon className="mt-1"></LooksOneRoundedIcon>
+              </div>
+              <div className="d-flex flex-column justify-content-center mx-4">
+                <h3 className="fs-4 fw-bold">数据库设计与建设</h3>
+                <p className="fs-6 fw-bold">简单介绍</p>
+              </div>
+            </div>
+            <div className="d-flex justify-content-start">
+              <div className="w-25">
+                <LooksTwoRoundedIcon className="mt-1"></LooksTwoRoundedIcon>
+              </div>
+              <div className="d-flex flex-column justify-content-center mx-4">
+                <h3 className="fs-4 fw-bold">软件开发与定制</h3>
+                <p className="fs-6 fw-bold">简单介绍</p>
+              </div>
+            </div>
+            <div className="d-flex justify-content-start">
+              <div className="w-25">
+                <Looks3RoundedIcon className="mt-1"></Looks3RoundedIcon>
+              </div>
+              <div className="d-flex flex-column justify-content-center mx-4">
+                <h3 className="fs-4 fw-bold">数据迁移和优化</h3>
+                <p className="fs-6 fw-bold">简单介绍</p>
+              </div>
+            </div>
           </Grid>
         </Grid>
-        <Grid container padding={2} justifyContent={"center"}>
+        {/* <Grid container padding={2} justifyContent={"center"}>
           <Grid
             item
             xs={12}
@@ -75,7 +89,7 @@ export const FunctionalityContainer = () => {
               ></img>
             </div>
           </Grid>
-        </Grid>
+        </Grid> */}
       </div>
     </div>
   );
