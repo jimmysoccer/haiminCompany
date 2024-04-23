@@ -66,7 +66,7 @@ function App() {
                   >
                     <p
                       className={
-                        pathName === nav.path
+                        pathName.includes(nav.path)
                           ? "nav-text-mobile clicked"
                           : "nav-text-mobile"
                       }
@@ -101,7 +101,7 @@ function App() {
                 >
                   <div
                     className={
-                      pathName === nav.path
+                      pathName.includes(nav.path)
                         ? "nav-text clicked px-5"
                         : "nav-text px-5"
                     }
@@ -109,7 +109,7 @@ function App() {
                   >
                     {nav.name}
                   </div>
-                  {pathName === nav.path && (
+                  {pathName.includes(nav.path) && (
                     <div className="nav-text-bottom-border"></div>
                   )}
                 </Link>
