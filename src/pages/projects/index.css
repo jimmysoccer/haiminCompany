@@ -2,3 +2,11 @@
   text-decoration: none;
   color: black;
 }
+.menu-link {
+  color: black;
+  cursor: pointer;
+}
+.menu-link:hover,
+.menu-link.clicked {
+  color: #04aa6d;
+}

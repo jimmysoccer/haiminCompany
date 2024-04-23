@@ -1,13 +1,14 @@
 import "./App.css";
 import Home from "./pages/home/Home";
-import { useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 import About from "./pages/About";
 import {
   companyIcon,
   computerScreenIcon,
   intranetIcon,
   logoIcon,
+  workingIcon,
 } from "./imgs/image";
 import { NAV_MENU } from "./constants/navBar";
 import { Drawer, Paper, useMediaQuery } from "@mui/material";
@@ -20,6 +21,8 @@ import Project from "./pages/projects/Project";
 
 function App() {
   const [currentNavBar, setCurrentNavBar] = useState(NAV_MENU[0].path);
+  const location = useLocation();
+  const pathName = location.pathname;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const isMobileMatch = useMediaQuery("(max-width:600px)");
 
@@ -63,7 +66,7 @@ function App() {
                   >
                     <p
                       className={
-                        currentNavBar === nav.path
+                        pathName === nav.path
                           ? "nav-text-mobile clicked"
                           : "nav-text-mobile"
                       }
@@ -98,7 +101,7 @@ function App() {
                 >
                   <div
                     className={
-                      currentNavBar === nav.path
+                      pathName === nav.path
                         ? "nav-text clicked px-5"
                         : "nav-text px-5"
                     }
@@ -106,7 +109,7 @@ function App() {
                   >
                     {nav.name}
                   </div>
-                  {currentNavBar === nav.path && (
+                  {pathName === nav.path && (
                     <div className="nav-text-bottom-border"></div>
                   )}
                 </Link>
@@ -117,14 +120,20 @@ function App() {
       </>
     );
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathName]);
+
   function HomeCarousel(props) {
     var items = [
       {
         image: companyIcon,
       },
       {
-        image: computerScreenIcon,
+        image: workingIcon,
       },
+      { image: computerScreenIcon },
       { image: intranetIcon },
     ];
 
