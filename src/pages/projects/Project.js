@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { workingIcon } from "../../imgs/image";
 import { NAV_MENU } from "../../constants/navBar";
+import { Grid } from "@mui/material";
 
 export default function Project() {
   const { id } = useParams();
@@ -19,7 +20,7 @@ export default function Project() {
           <p className="me-3 menu-link clicked">案例 {id}</p>
         </div>
       </div>
-      <div style={{ height: "500px" }} className="overflow-hidden">
+      <div className="overflow-hidden">
         <img
           src={workingIcon}
           alt="working person"
@@ -31,19 +32,34 @@ export default function Project() {
         <p className="mb-5 text-secondary">
           介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作
         </p>
+
+        <Grid container justifyContent={"center"}>
+          <Grid item className="mb-5 d-flex justify-content-center">
+            <video controls className="w-100">
+              <source
+                src="https://assets.codepen.io/6093409/river.mp4"
+                type="video/mp4"
+              ></source>
+            </video>
+          </Grid>
+        </Grid>
       </div>
       <div className="container d-flex justify-content-center w-75 mt-3 mb-5">
         <div className="w-50 d-flex justify-content-start">
-          <Link
-            to={`/projects/${id - 1}`}
-            className="text-decoration-none menu-link"
-          >
-            {"< 上一个"}
-          </Link>
+          {id > 1 ? (
+            <Link
+              to={`/projects/${id - 1}`}
+              className="text-decoration-none menu-link"
+            >
+              {"< 上一个"}
+            </Link>
+          ) : (
+            <div>这就是第一个</div>
+          )}
         </div>
         <div className="w-50 d-flex justify-content-end">
           <Link
-            to={`/projects/${id + 1}`}
+            to={`/projects/${+id + 1}`}
             className="text-decoration-none menu-link"
           >
             {"下一个 >"}

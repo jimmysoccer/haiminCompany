@@ -20,7 +20,6 @@ import { FooterContainer } from "./pages/home/components/footer_container";
 import Project from "./pages/projects/Project";
 
 function App() {
-  const [currentNavBar, setCurrentNavBar] = useState(NAV_MENU[0].path);
   const location = useLocation();
   const pathName = location.pathname;
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -59,7 +58,6 @@ function App() {
                   <Link
                     to={nav.path}
                     onClick={() => {
-                      setCurrentNavBar(nav.path);
                       setDrawerOpen(false);
                     }}
                     style={{ textDecoration: "none" }}
@@ -92,13 +90,7 @@ function App() {
             </div>
             <div className="nav-menu">
               {NAV_MENU.map((nav) => (
-                <Link
-                  to={nav.path}
-                  onClick={() => {
-                    setCurrentNavBar(nav.path);
-                  }}
-                  className="position-relative"
-                >
+                <Link to={nav.path} className="position-relative">
                   <div
                     className={
                       pathName.includes(nav.path)
