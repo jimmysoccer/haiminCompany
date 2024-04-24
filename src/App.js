@@ -5,8 +5,8 @@ import { Link, Route, Routes, useLocation } from "react-router-dom";
 import About from "./pages/About";
 import {
   companyIcon,
-  computerScreenIcon,
-  intranetIcon,
+  database1Icon,
+  database2Icon,
   logoIcon,
   workingIcon,
 } from "./imgs/image";
@@ -125,8 +125,8 @@ function App() {
       {
         image: workingIcon,
       },
-      { image: computerScreenIcon },
-      { image: intranetIcon },
+      { image: database1Icon },
+      { image: database2Icon },
     ];
 
     return (
@@ -142,7 +142,7 @@ function App() {
     return (
       <Paper
         className="d-flex justify-content-center shadow-none"
-        style={{ height: "400px" }}
+        style={{ maxHeight: "270px" }}
       >
         <img
           src={imageUrl}

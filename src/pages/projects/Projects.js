@@ -9,7 +9,7 @@ export default function Projects() {
       <h2 className="mb-5">案例展示</h2>
       <Grid container justifyContent={"start"} spacing={2}>
         {[1, 2, 3, 4, 5].map((item) => (
-          <Grid xs={12} item md={4} className="case m2 px-5">
+          <Grid xs={12} item md={4} className="case px-5 my-3">
             <Link to={`/projects/${item}`}>
               <div>
                 <img src={computerScreenIcon} alt="product"></img>
