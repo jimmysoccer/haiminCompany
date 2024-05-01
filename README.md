@@ -23,6 +23,7 @@ You may also see any lint errors in the console.
 ### `npm run deploy`
 
 Deploy the app to https://jimmysoccer.github.io/haiminCompany.
+<a href="http://example.com/" target="_blank">Hello, world!</a>
 
 ## References
 
