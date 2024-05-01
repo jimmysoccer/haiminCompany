@@ -1,6 +1,7 @@
 # haimin Company
 
-This project is used to build a portal website application for haimin company.
+This is the repository for haimin company website. \
+The website will be deployed on tencent cloud.
 
 ## Tech used
 1. React
