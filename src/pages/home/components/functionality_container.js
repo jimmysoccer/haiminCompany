@@ -1,8 +1,10 @@
 import { Grid } from "@mui/material";
-import { computerScreenIcon } from "../../../imgs/image";
 import LooksOneRoundedIcon from "@mui/icons-material/LooksOneRounded";
 import LooksTwoRoundedIcon from "@mui/icons-material/LooksTwoRounded";
 import Looks3RoundedIcon from "@mui/icons-material/Looks3Rounded";
+import aboutAnimation from "../../../assets/about.json";
+import Lottie from "lottie-react";
+
 export const FunctionalityContainer = () => {
   return (
     <div className="bg-primary-subtle">
@@ -16,11 +18,10 @@ export const FunctionalityContainer = () => {
             className="d-flex mx-5 justify-content-center"
           >
             <div className="container d-flex">
-              <img
-                src={computerScreenIcon}
-                alt="computer screen"
+              <Lottie
                 className="img-fluid"
-              ></img>
+                animationData={aboutAnimation}
+              ></Lottie>
             </div>
           </Grid>
           <Grid
