@@ -1,15 +1,16 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const ProjectsContainer = () => {
   return (
-    <div className="bg-warning-subtle">
+    <div className="bg-warning-subtle p-5">
       <Grid
         container
         className="container text-center"
         justifyContent={"start"}
       >
-        {[1, 2, 3, 4, 5].map((item) => (
+        {/* only display top 4 cases */}
+        {[1, 2, 3, 4].map((item) => (
           <Grid item xs={12} md={6} className="d-flex justify-content-center">
             <Link
               to={`/projects/${item}`}
@@ -24,6 +25,13 @@ export const ProjectsContainer = () => {
             </Link>
           </Grid>
         ))}
+        <Grid item xs={12} md={12}>
+          <Link to={"/projects/"}>
+            <Button variant="contained" size="large" className="mt-3">
+              查看更多项目
+            </Button>
+          </Link>
+        </Grid>
       </Grid>
     </div>
   );
