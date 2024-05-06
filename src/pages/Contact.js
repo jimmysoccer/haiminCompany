@@ -1,6 +1,7 @@
 import { Button, Grid, TextField } from "@mui/material";
 import { workingIcon } from "../imgs/image";
 import { useState } from "react";
+import { ContactInfo } from "../constants/contact";
 
 export default function Contact() {
   const [title, setTitle] = useState("");
@@ -36,11 +37,11 @@ export default function Contact() {
           className="my-5 d-flex flex-column justify-content-center"
         >
           <h3>地址</h3>
-          <p>上海市</p>
+          <p>{ContactInfo.address}</p>
           <h3>联系电话</h3>
-          <p>XXXXXXX</p>
+          <p>{ContactInfo.telephone}</p>
           <h3>邮箱</h3>
-          <p>XXXXX</p>
+          <p>{ContactInfo.email}</p>
         </Grid>
         <Grid item xs={12} md={6} className="my-5">
           <TextField

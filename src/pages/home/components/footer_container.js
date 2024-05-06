@@ -1,4 +1,5 @@
 import { Grid } from "@mui/material";
+import { ContactInfo } from "../../../constants/contact";
 
 export const FooterContainer = () => {
   return (
@@ -10,12 +11,12 @@ export const FooterContainer = () => {
       <Grid container justifyContent={"center"}>
         <Grid item md={3} margin={2}>
           <p className="fs-5 fw-bold">地址</p>
-          <p>上海市XXXXX</p>
+          <p>{ContactInfo.address}</p>
         </Grid>
         <Grid item md={3} margin={2}>
           <p className="fs-5 fw-bold">联系我们</p>
-          <p className="m-0">邮箱@email.com</p>
-          <p className="m-0">电话</p>
+          <p className="m-0">{ContactInfo.email}</p>
+          <p className="m-0">{ContactInfo.telephone}</p>
         </Grid>
         <Grid item md={3} margin={2}>
           <p className="fs-5 fw-bold">关于我们</p>

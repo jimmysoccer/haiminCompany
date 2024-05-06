@@ -1,5 +1,6 @@
 import { Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
+import { ProjectsList } from "../../../constants/projectsConst";
 
 export const ProjectsContainer = () => {
   return (
@@ -10,18 +11,20 @@ export const ProjectsContainer = () => {
         justifyContent={"start"}
       >
         {/* only display top 4 cases */}
-        {[1, 2, 3, 4].map((item) => (
+        {ProjectsList.map((project, index) => (
           <Grid item xs={12} md={6} className="d-flex justify-content-center">
             <Link
-              to={`/projects/${item}`}
+              to={`/projects/${index + 1}`}
               className="w-75 p-5 my-4 border bg-white shadow rounded d-flex flex-column
             justify-content-center text-decoration-none text-black"
             >
-              <p className="fs-5 fw-bold m-0">项目{item}</p>
-              <div className="d-flex justify-content-center">
-                <p className="p-2">项目具体大概信息</p>
+              <p className="fs-5 fw-bold m-0">{project.title}</p>
+              <div className="d-flex flex-column justify-content-center m-3">
+                {project.description.map((des) => (
+                  <div>{des}</div>
+                ))}
               </div>
-              <p className="fs-5 fw-bold">深圳, 5月1日</p>
+              <p className="fs-5 fw-bold">{`${project.location}, ${project.date}`}</p>
             </Link>
           </Grid>
         ))}

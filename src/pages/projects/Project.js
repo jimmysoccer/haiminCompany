@@ -1,10 +1,12 @@
 import { Link, useParams } from "react-router-dom";
-import { workingIcon } from "../../imgs/image";
 import { NAV_MENU } from "../../constants/navBar";
 import { Grid } from "@mui/material";
+import { ProjectsList } from "../../constants/projectsConst";
 
 export default function Project() {
   const { id } = useParams();
+  const project = ProjectsList[id - 1];
+
   return (
     <div className="container text-center">
       <div className="my-3 w-75 d-inline-block">
@@ -17,32 +19,36 @@ export default function Project() {
             <p className="me-3 menu-link">产品中心</p>
           </Link>
           <p className="me-3">{">"}</p>
-          <p className="me-3 menu-link clicked">案例 {id}</p>
+          <p className="me-3 menu-link clicked">{project.title}</p>
         </div>
       </div>
-      <div className="overflow-hidden">
-        <img
-          src={workingIcon}
-          alt="working person"
-          className="img-fluid w-75"
-        ></img>
-      </div>
+      {project.image ? (
+        <div className="overflow-hidden">
+          <img
+            src={project.image}
+            alt="project"
+            className="img-fluid w-75"
+          ></img>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="w-75 text-center d-inline-block">
-        <h1 className="my-5">案例{id}</h1>
-        <p className="mb-5 text-secondary">
-          介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作介绍具体工作
-        </p>
-
-        <Grid container justifyContent={"center"}>
-          <Grid item className="mb-5 d-flex justify-content-center">
-            <video controls className="w-100">
-              <source
-                src="https://assets.codepen.io/6093409/river.mp4"
-                type="video/mp4"
-              ></source>
-            </video>
+        <h1 className="my-5">{project.title}</h1>
+        {project.description.map((des) => (
+          <p className="text-secondary">{des}</p>
+        ))}
+        {project.video ? (
+          <Grid container justifyContent={"center"}>
+            <Grid item className="my-5 d-flex justify-content-center">
+              <video controls className="w-100">
+                <source src={project.video} type="video/mp4"></source>
+              </video>
+            </Grid>
           </Grid>
-        </Grid>
+        ) : (
+          ""
+        )}
       </div>
       <div className="container d-flex justify-content-center w-75 mt-3 mb-5">
         <div className="w-50 d-flex justify-content-start">
@@ -51,19 +57,23 @@ export default function Project() {
               to={`/projects/${id - 1}`}
               className="text-decoration-none menu-link"
             >
-              {"< 上一个"}
+              {`< 上一个: ${ProjectsList[id - 2].title} >`}
             </Link>
           ) : (
             <div>这就是第一个</div>
           )}
         </div>
         <div className="w-50 d-flex justify-content-end">
-          <Link
-            to={`/projects/${+id + 1}`}
-            className="text-decoration-none menu-link"
-          >
-            {"下一个 >"}
-          </Link>
+          {parseInt(id) === ProjectsList.length ? (
+            <div>这就是最后一个</div>
+          ) : (
+            <Link
+              to={`/projects/${+id + 1}`}
+              className="text-decoration-none menu-link"
+            >
+              {`下一个: ${ProjectsList[id]?.title} >`}
+            </Link>
+          )}
         </div>
       </div>
     </div>
