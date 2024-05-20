@@ -1,7 +1,7 @@
 {
   "name": "haimin_company",
   "version": "0.1.0",
-  "homepage": "sh-haimin.cn",
+  "homepage": "https://staging.d2q36mdd5vspr9.amplifyapp.com/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.0",

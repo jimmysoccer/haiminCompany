@@ -1,7 +1,7 @@
 import "./App.css";
 import Home from "./pages/home/Home";
 import { useEffect, useState } from "react";
-import { Link, Route, Routes, useLocation } from "react-router-dom";
+import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import About from "./pages/About";
 import {
   companyIcon,
@@ -159,8 +159,12 @@ function App() {
       <HomeCarousel />
 
       <Routes>
+        <Route path={"/"} element={<Navigate to="/home" />}></Route>
         <Route path={NAV_MENU[0].path} element={<Home />}></Route>
-        <Route path={"/haiminCompany"} element={<Home />}></Route>
+        <Route
+          path={"/haiminCompany"}
+          element={<Navigate to="/home" />}
+        ></Route>
         <Route path={NAV_MENU[1].path} element={<About />}></Route>
         <Route path={NAV_MENU[2].path} element={<Projects />}></Route>
         <Route path={NAV_MENU[2].path + "/:id"} element={<Project />}></Route>
