@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/sh-haimin.cn/static/css/main.328a9cc9.css",
-    "main.js": "/sh-haimin.cn/static/js/main.15476fc0.js",
-    "static/js/787.6262df26.chunk.js": "/sh-haimin.cn/static/js/787.6262df26.chunk.js",
-    "static/media/working.jpg": "/sh-haimin.cn/static/media/working.9a6110a9dffd0fff7eb3.jpg",
-    "static/media/intranet-technical.svg": "/sh-haimin.cn/static/media/intranet-technical.3c3fa83b30e1ecf0843ac39a1444c283.svg",
-    "static/media/database1.jpg": "/sh-haimin.cn/static/media/database1.138d34398f86e1b0426b.jpg",
-    "static/media/wave.svg": "/sh-haimin.cn/static/media/wave.da1f5beefe4faafad9949ba51d193e42.svg",
-    "static/media/company.jpg": "/sh-haimin.cn/static/media/company.7909ca3d93bae63d3321.jpg",
-    "static/media/computer-screen.svg": "/sh-haimin.cn/static/media/computer-screen.2d54460e26bb77a677a8bf186d9400a0.svg",
-    "static/media/database2.jpg": "/sh-haimin.cn/static/media/database2.acada2e16d31bfcc9f20.jpg",
-    "index.html": "/sh-haimin.cn/index.html",
-    "main.328a9cc9.css.map": "/sh-haimin.cn/static/css/main.328a9cc9.css.map",
-    "main.15476fc0.js.map": "/sh-haimin.cn/static/js/main.15476fc0.js.map",
-    "787.6262df26.chunk.js.map": "/sh-haimin.cn/static/js/787.6262df26.chunk.js.map"
+    "main.css": "/static/css/main.328a9cc9.css",
+    "main.js": "/static/js/main.f41065c0.js",
+    "static/js/787.6262df26.chunk.js": "/static/js/787.6262df26.chunk.js",
+    "static/media/working.jpg": "/static/media/working.9a6110a9dffd0fff7eb3.jpg",
+    "static/media/intranet-technical.svg": "/static/media/intranet-technical.3c3fa83b30e1ecf0843ac39a1444c283.svg",
+    "static/media/database1.jpg": "/static/media/database1.138d34398f86e1b0426b.jpg",
+    "static/media/wave.svg": "/static/media/wave.da1f5beefe4faafad9949ba51d193e42.svg",
+    "static/media/company.jpg": "/static/media/company.7909ca3d93bae63d3321.jpg",
+    "static/media/computer-screen.svg": "/static/media/computer-screen.2d54460e26bb77a677a8bf186d9400a0.svg",
+    "static/media/database2.jpg": "/static/media/database2.acada2e16d31bfcc9f20.jpg",
+    "index.html": "/index.html",
+    "main.328a9cc9.css.map": "/static/css/main.328a9cc9.css.map",
+    "main.f41065c0.js.map": "/static/js/main.f41065c0.js.map",
+    "787.6262df26.chunk.js.map": "/static/js/787.6262df26.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.328a9cc9.css",
-    "static/js/main.15476fc0.js"
+    "static/js/main.f41065c0.js"
   ]
 }
