@@ -1,7 +1,7 @@
 {
   "name": "haimin_company",
   "version": "0.1.0",
-  "homepage": "https://jimmysoccer.github.io/haiminCompany/",
+  "homepage": "/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.0",
