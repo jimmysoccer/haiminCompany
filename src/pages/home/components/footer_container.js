@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import { ContactInfo } from "../../../constants/contact";
+import { ICP } from "../../../constants/constant";
 
 export const FooterContainer = () => {
   return (
@@ -24,8 +25,11 @@ export const FooterContainer = () => {
         </Grid>
       </Grid>
       <div className="w-100 h-1 border mb-5"></div>
-      <Grid container justifyContent={"center"}>
-        海民科技 ©
+      <Grid container justifyContent={"center"} flexDirection={"column"}>
+        <div>海民科技 ©</div>
+        <a href="https://beian.miit.gov.cn/" target="_blank">
+          {ICP}
+        </a>
       </Grid>
     </div>
   );
