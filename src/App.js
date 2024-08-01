@@ -11,13 +11,15 @@ import {
   workingIcon,
 } from "./imgs/image";
 import { NAV_MENU } from "./constants/navBar";
-import { Drawer, Paper, useMediaQuery } from "@mui/material";
+import { Avatar, Drawer, Paper, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Projects from "./pages/projects/Projects";
 import Contact from "./pages/Contact";
 import Carousel from "react-material-ui-carousel";
 import { FooterContainer } from "./pages/home/components/footer_container";
 import Project from "./pages/projects/Project";
+import Login from "./components/common/Login";
+import AddProject from "./components/common/AddProject";
 
 function App() {
   const location = useLocation();
@@ -73,6 +75,11 @@ function App() {
                     </p>
                   </Link>
                 ))}
+                <div className="d-flex justify-content-center">
+                  <Link className="text-decoration-none" to={"login"}>
+                    <Avatar>H</Avatar>
+                  </Link>
+                </div>
               </div>
             </Drawer>
           </div>
@@ -81,31 +88,45 @@ function App() {
             className="d-flex justify-content-center"
             style={{ height: "100px" }}
           >
-            <div className="h-100 mx-5">
-              <img
-                src={logoIcon}
-                alt="logo"
-                className="img-fluid w-100 h-100"
-              ></img>
+            <div style={{ width: "10%" }}></div>
+            <div
+              style={{ width: "80%" }}
+              className="d-flex justify-content-center"
+            >
+              <div className="h-100 mx-5">
+                <img
+                  src={logoIcon}
+                  alt="logo"
+                  className="img-fluid w-100 h-100"
+                ></img>
+              </div>
+              <div className="nav-menu">
+                {NAV_MENU.map((nav) => (
+                  <Link to={nav.path} className="position-relative">
+                    <div
+                      className={
+                        pathName.includes(nav.path)
+                          ? "nav-text clicked px-5"
+                          : "nav-text px-5"
+                      }
+                      style={{ lineHeight: "100px" }}
+                    >
+                      {nav.name}
+                    </div>
+                    {pathName.includes(nav.path) && (
+                      <div className="nav-text-bottom-border"></div>
+                    )}
+                  </Link>
+                ))}
+              </div>
             </div>
-            <div className="nav-menu">
-              {NAV_MENU.map((nav) => (
-                <Link to={nav.path} className="position-relative">
-                  <div
-                    className={
-                      pathName.includes(nav.path)
-                        ? "nav-text clicked px-5"
-                        : "nav-text px-5"
-                    }
-                    style={{ lineHeight: "100px" }}
-                  >
-                    {nav.name}
-                  </div>
-                  {pathName.includes(nav.path) && (
-                    <div className="nav-text-bottom-border"></div>
-                  )}
-                </Link>
-              ))}
+            <div
+              style={{ width: "10%" }}
+              className="d-flex justify-content-center align-items-center"
+            >
+              <Link className="text-decoration-none" to={"login"}>
+                <Avatar>H</Avatar>
+              </Link>
             </div>
           </div>
         )}
@@ -169,6 +190,8 @@ function App() {
         <Route path={NAV_MENU[2].path} element={<Projects />}></Route>
         <Route path={NAV_MENU[2].path + "/:id"} element={<Project />}></Route>
         <Route path={NAV_MENU[3].path} element={<Contact />}></Route>
+        <Route path="login" element={<Login />}></Route>
+        <Route path="add_project" element={<AddProject />}></Route>
       </Routes>
 
       <FooterContainer />

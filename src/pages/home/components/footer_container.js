@@ -27,9 +27,11 @@ export const FooterContainer = () => {
       <div className="w-100 h-1 border mb-5"></div>
       <Grid container justifyContent={"center"} flexDirection={"column"}>
         <div>海民科技 ©</div>
-        <a href="https://beian.miit.gov.cn/" target="_blank">
-          {ICP}
-        </a>
+        <div>
+          <a href="https://beian.miit.gov.cn/" rel="noreferrer" target="_blank">
+            {ICP}
+          </a>
+        </div>
       </Grid>
     </div>
   );
