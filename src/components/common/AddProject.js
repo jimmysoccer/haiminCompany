@@ -14,8 +14,15 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { CloudUpload } from "@mui/icons-material";
 import { postImages } from "../../services/post-images";
 import { postProject } from "../../services/post-project";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useAtomValue } from "jotai";
+import { accessRoleAtom } from "../../atoms/atom";
+import { VISITOR } from "../../constants/constant";
 
 export default function AddProject() {
+  const accessRole = useAtomValue(accessRoleAtom);
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [place, setPlace] = useState("");
   const [description, setDescription] = useState("");
@@ -23,6 +30,11 @@ export default function AddProject() {
   const [endDate, setEndDate] = useState(dayjs());
   const [imageFiles, setImageFiles] = useState([]);
   const [previewVideos, setPreviewVideos] = useState([]);
+
+  if (accessRole === VISITOR) {
+    navigate("/home");
+    return;
+  }
 
   const handleImageChange = (e) => {
     let images = Array.from(e.target.files);
@@ -50,8 +62,13 @@ export default function AddProject() {
       images: imagePaths,
     };
     try {
-      await uploadImages(imageFiles);
+      if (imageFiles.length !== 0) await uploadImages(imageFiles);
       const res = await postProject(payload);
+      const success = res.status;
+      if (success) {
+        toast.success(`成功上传${payload.title}项目`);
+        navigate("/projects");
+      }
     } catch (e) {
       console.error("error", e);
     }

@@ -1,4 +1,4 @@
-import { Button, Grid } from "@mui/material";
+import { Button, CircularProgress, Grid } from "@mui/material";
 import "./index.css";
 import { Link } from "react-router-dom";
 import { useAtomValue } from "jotai";
@@ -14,6 +14,7 @@ export default function Projects() {
   const editor = accessRole === EDITOR;
 
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     handleGetProjects();
@@ -21,14 +22,19 @@ export default function Projects() {
 
   const handleGetProjects = async () => {
     try {
+      setLoading(true);
       const res = await getProjects();
       setProjects(res?.data?.projects);
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDeleteProject = async (id) => {
     try {
-      const res = await deleteProject(id);
+      setLoading(true);
+      await deleteProject(id);
     } catch (error) {
     } finally {
       handleGetProjects();
@@ -39,37 +45,46 @@ export default function Projects() {
     <div className="container text-center my-5">
       <h2 className="mb-5">案例展示</h2>
       {editor && (
-        <Link to={"/add_project"}>
-          <Button variant="contained" size="large">
-            添加项目
-          </Button>
-        </Link>
+        <div className="container">
+          <Link to={"/add_project"}>
+            <Button variant="contained" size="large">
+              添加项目
+            </Button>
+          </Link>
+        </div>
       )}
       <Grid container justifyContent={"start"} spacing={2}>
-        {projects.map((project) => (
-          <Grid xs={12} item md={4} className="case px-5 my-3">
-            <Link to={`/projects/${project.id}`} state={{ project }}>
-              <div className="mw-100 mh-200">
-                <img
-                  src={
-                    project.images.length !== 0 ? project.images[0] : logoIcon
-                  }
-                  alt="product"
-                  className="img-fluid"
-                ></img>
-              </div>
-              <h4>{project.title}</h4>
-            </Link>
-            {editor && (
-              <Button
-                variant="contained"
-                onClick={() => handleDeleteProject(project?.id)}
-              >
-                删除此项目
-              </Button>
-            )}
-          </Grid>
-        ))}
+        {loading ? (
+          <div className="container my-5">
+            <CircularProgress></CircularProgress>
+          </div>
+        ) : (
+          projects.map((project) => (
+            <Grid xs={12} item md={4} className="case px-5 my-3">
+              <Link to={`/projects/${project.id}`} state={{ project }}>
+                <div className="mw-100 mh-200">
+                  <img
+                    style={{ maxHeight: "200px", maxWidth: "300px" }}
+                    src={
+                      project.images.length !== 0 ? project.images[0] : logoIcon
+                    }
+                    alt="product"
+                    className="img-fluid"
+                  ></img>
+                </div>
+                <h4>{project.title}</h4>
+              </Link>
+              {editor && (
+                <Button
+                  variant="contained"
+                  onClick={() => handleDeleteProject(project?.id)}
+                >
+                  删除此项目
+                </Button>
+              )}
+            </Grid>
+          ))
+        )}
       </Grid>
     </div>
   );

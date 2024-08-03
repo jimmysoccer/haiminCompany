@@ -1,6 +1,6 @@
 import computerScreen from "./computer-screen.svg";
 import intranet from "./intranet-technical.svg";
-import logo from "./logo.jpg";
+import logo from "./logo.png";
 import company from "./company.jpg";
 import wave from "./wave.svg";
 import working from "./working.jpg";

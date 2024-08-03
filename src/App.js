@@ -24,6 +24,7 @@ import { useAtomValue } from "jotai";
 import { accessRoleAtom } from "./atoms/atom";
 import { VISITOR } from "./constants/constant";
 import { deepOrange } from "@mui/material/colors";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const location = useLocation();
@@ -102,11 +103,11 @@ function App() {
               style={{ width: "80%" }}
               className="d-flex justify-content-center"
             >
-              <div className="h-100 mx-5">
+              <div className="h-100 mx-5 d-flex align-items-center">
                 <img
                   src={logoIcon}
                   alt="logo"
-                  className="img-fluid w-100 h-100"
+                  className="img-fluid w-100 h-75"
                 ></img>
               </div>
               <div className="nav-menu">
@@ -208,6 +209,7 @@ function App() {
       </Routes>
 
       <FooterContainer />
+      <Toaster></Toaster>
     </div>
   );
 }
