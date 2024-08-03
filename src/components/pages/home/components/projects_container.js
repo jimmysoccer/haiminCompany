@@ -34,10 +34,12 @@ export const ProjectsContainer = () => {
             <CircularProgress></CircularProgress>
           </div>
         ) : (
-          projects.map((project) => (
+          projects.length > 0 &&
+          projects.slice(0, 4).map((project) => (
             <Grid item xs={12} md={6} className="d-flex justify-content-center">
               <Link
                 to={`/projects/${project?.id}`}
+                state={{ project }}
                 className="w-75 p-5 my-4 border bg-white shadow rounded d-flex flex-column
             justify-content-center text-decoration-none text-black"
               >

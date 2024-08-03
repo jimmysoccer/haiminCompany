@@ -9,6 +9,7 @@ import { useAtom } from "jotai";
 import { accessRoleAtom } from "../../atoms/atom";
 import { EDITOR, VISITOR } from "../../constants/constant";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -25,6 +26,7 @@ const Login = () => {
       if (res.status === 200) {
         setAccessRole(EDITOR);
         navigate("/home");
+        toast.success("您已成功登录!");
       } else {
         setAccessRole(VISITOR);
         setLoginError(true);
@@ -34,6 +36,11 @@ const Login = () => {
       setAccessRole(VISITOR);
       setLoginError(true);
     }
+  };
+
+  const handleLogout = () => {
+    setAccessRole(VISITOR);
+    toast.error("您已退出登录!");
   };
   return (
     <div className="container">
@@ -88,7 +95,7 @@ const Login = () => {
                   variant="contained"
                   size="large"
                   onClick={() => {
-                    setAccessRole(VISITOR);
+                    handleLogout();
                   }}
                 >
                   退出登录

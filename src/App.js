@@ -19,6 +19,7 @@ import AddProject from "./components/common/AddProject";
 import { Toaster } from "react-hot-toast";
 import NavBar from "./components/layout/NavBar";
 import CustomCarousel from "./components/common/CustomCarousel";
+import { NotFound } from "./components/common/NotFound";
 
 function App() {
   const location = useLocation();
@@ -49,6 +50,7 @@ function App() {
         <Route path={NAV_MENU[3].path} element={<Contact />}></Route>
         <Route path="login" element={<Login />}></Route>
         <Route path="add_project" element={<AddProject />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
 
       <FooterContainer />

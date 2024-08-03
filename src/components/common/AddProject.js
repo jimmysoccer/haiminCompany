@@ -68,9 +68,12 @@ export default function AddProject() {
       if (success) {
         toast.success(`成功上传${payload.title}项目`);
         navigate("/projects");
+      } else {
+        toast.error("上传失败!");
       }
     } catch (e) {
       console.error("error", e);
+      toast.error("上传失败!");
     }
   };
 
