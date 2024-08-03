@@ -1,11 +1,12 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { NAV_MENU } from "../../constants/navBar";
 import { Grid } from "@mui/material";
-import { ProjectsList } from "../../constants/projectsConst";
+import CustomCarousel from "../../components/common/CustomCarousel";
 
 export default function Project() {
-  const { id } = useParams();
-  const project = ProjectsList[id - 1];
+  const location = useLocation();
+  const project = location.state?.project;
+  const descriptions = project?.description?.split("\n");
 
   return (
     <div className="container text-center">
@@ -22,22 +23,15 @@ export default function Project() {
           <p className="me-3 menu-link clicked">{project.title}</p>
         </div>
       </div>
-      {project.image ? (
-        <div className="overflow-hidden">
-          <img
-            src={project.image}
-            alt="project"
-            className="img-fluid w-75"
-          ></img>
-        </div>
-      ) : (
-        ""
-      )}
       <div className="w-75 text-center d-inline-block">
         <h1 className="my-5">{project.title}</h1>
-        {project.description.map((des) => (
+        {descriptions?.map((des) => (
           <p className="text-secondary">{des}</p>
         ))}
+
+        {project.images && (
+          <CustomCarousel images={project.images}></CustomCarousel>
+        )}
         {project.video ? (
           <Grid container justifyContent={"center"}>
             <Grid item className="my-5 d-flex justify-content-center">
@@ -50,7 +44,7 @@ export default function Project() {
           ""
         )}
       </div>
-      <div className="container d-flex justify-content-center w-75 mt-3 mb-5">
+      {/* <div className="container d-flex justify-content-center w-75 mt-3 mb-5">
         <div className="w-50 d-flex justify-content-start">
           {id > 1 ? (
             <Link
@@ -75,7 +69,7 @@ export default function Project() {
             </Link>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

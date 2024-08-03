@@ -20,11 +20,16 @@ import { FooterContainer } from "./pages/home/components/footer_container";
 import Project from "./pages/projects/Project";
 import Login from "./components/common/Login";
 import AddProject from "./components/common/AddProject";
+import { useAtomValue } from "jotai";
+import { accessRoleAtom } from "./atoms/atom";
+import { VISITOR } from "./constants/constant";
+import { deepOrange } from "@mui/material/colors";
 
 function App() {
   const location = useLocation();
   const pathName = location.pathname;
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const accessRole = useAtomValue(accessRoleAtom);
   const isMobileMatch = useMediaQuery("(max-width:600px)");
 
   const toggleDrawer = (open) => {
@@ -77,7 +82,11 @@ function App() {
                 ))}
                 <div className="d-flex justify-content-center">
                   <Link className="text-decoration-none" to={"login"}>
-                    <Avatar>H</Avatar>
+                    {accessRole === VISITOR ? (
+                      <Avatar sx={{ width: 24, height: 24 }}>N</Avatar>
+                    ) : (
+                      <Avatar sx={{ bgcolor: deepOrange[500] }}>H</Avatar>
+                    )}
                   </Link>
                 </div>
               </div>
@@ -125,7 +134,11 @@ function App() {
               className="d-flex justify-content-center align-items-center"
             >
               <Link className="text-decoration-none" to={"login"}>
-                <Avatar>H</Avatar>
+                {accessRole === VISITOR ? (
+                  <Avatar>H</Avatar>
+                ) : (
+                  <Avatar sx={{ bgcolor: deepOrange[500] }}>H</Avatar>
+                )}
               </Link>
             </div>
           </div>

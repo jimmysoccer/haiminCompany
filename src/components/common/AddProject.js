@@ -12,6 +12,8 @@ import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { CloudUpload } from "@mui/icons-material";
+import { postImages } from "../../services/post-images";
+import { postProject } from "../../services/post-project";
 
 export default function AddProject() {
   const [title, setTitle] = useState("");
@@ -19,12 +21,16 @@ export default function AddProject() {
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState(dayjs());
   const [endDate, setEndDate] = useState(dayjs());
-  const [previewImages, setPreviewImages] = useState([]);
+  const [imageFiles, setImageFiles] = useState([]);
   const [previewVideos, setPreviewVideos] = useState([]);
 
   const handleImageChange = (e) => {
-    const images = Array.from(e.target.files);
-    setPreviewImages(images.map((i) => URL.createObjectURL(i)));
+    let images = Array.from(e.target.files);
+    if (images.length === 0) return;
+    images = images.filter(
+      (image) => !imageFiles.map((a) => a.name).includes(image?.name)
+    );
+    setImageFiles([...imageFiles, ...images]);
   };
 
   const handleVideoChange = (e) => {
@@ -34,21 +40,34 @@ export default function AddProject() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const imagePaths = imageFiles.map((image) => image.name).join(",");
     const payload = {
       title,
       place,
-      startDate,
-      endDate,
+      start_date: startDate.toISOString(),
+      end_date: endDate.toISOString(),
       description,
-      previewImages,
-      previewVideos,
+      images: imagePaths,
     };
-    console.log("payload", payload);
+    try {
+      await uploadImages(imageFiles);
+      const res = await postProject(payload);
+    } catch (e) {
+      console.error("error", e);
+    }
+  };
+
+  const uploadImages = async (images) => {
+    try {
+      await postImages(images);
+    } catch (error) {
+      console.error("upload images error", error);
+    }
   };
   return (
     <div className="container text-center my-5">
       <h1>添加项目</h1>
-      <form onSubmit={(e) => handleSubmit(e)} noValidate>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <TextField
           margin="normal"
           required
@@ -117,11 +136,11 @@ export default function AddProject() {
             <input className="d-none" type="file" multiple></input>
           </Button>
           <ImageList cols={2} rowHeight={400}>
-            {previewImages.map((image, index) => (
-              <ImageListItem key={image}>
+            {imageFiles.map((image, index) => (
+              <ImageListItem key={`preview-image-${index}`}>
                 <img
                   style={{ objectFit: "fill" }}
-                  src={`${image}`}
+                  src={`${URL.createObjectURL(image)}`}
                   alt={`preview-${index}`}
                   loading="lazy"
                 />
@@ -131,6 +150,7 @@ export default function AddProject() {
         </div>
         <div className="container my-3">
           <Button
+            disabled
             component="label"
             role={undefined}
             variant="contained"

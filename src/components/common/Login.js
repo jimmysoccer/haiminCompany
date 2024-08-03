@@ -8,6 +8,7 @@ import { getLoginAuth } from "../../services/get-login-auth";
 import { useAtom } from "jotai";
 import { accessRoleAtom } from "../../atoms/atom";
 import { EDITOR, VISITOR } from "../../constants/constant";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -15,13 +16,15 @@ const Login = () => {
   const [accessRole, setAccessRole] = useAtom(accessRoleAtom);
   const [loginError, setLoginError] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const res = await getLoginAuth(username, password);
       if (res.status === 200) {
         setAccessRole(EDITOR);
-        window.location.href = "/home";
+        navigate("/home");
       } else {
         setAccessRole(VISITOR);
         setLoginError(true);
