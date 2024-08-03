@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
-import { waveIcon } from "../../../imgs/image";
+import { waveIcon } from "../../../../assets/images/image";
 import Lottie from "lottie-react";
-import databaseAnimation from "../../../assets/database.json";
+import databaseAnimation from "../../../../assets/database.json";
 
 export const IntroductionContainer = () => {
   return (

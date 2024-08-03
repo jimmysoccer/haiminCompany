@@ -1,12 +1,12 @@
 import { Button, CircularProgress, Grid } from "@mui/material";
-import "./index.css";
+import "../../assets/styles/projects.css";
 import { Link } from "react-router-dom";
 import { useAtomValue } from "jotai";
 import { accessRoleAtom } from "../../atoms/atom";
 import { EDITOR } from "../../constants/constant";
 import { getProjects } from "../../services/get-projects";
 import { useEffect, useState } from "react";
-import { logoIcon } from "../../imgs/image";
+import { logoIcon } from "../../assets/images/image";
 import { deleteProject } from "../../services/delete-project";
 
 export default function Projects() {

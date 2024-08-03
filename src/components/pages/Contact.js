@@ -1,7 +1,7 @@
 import { Button, Grid, TextField } from "@mui/material";
-import { workingIcon } from "../imgs/image";
+import { workingIcon } from "../../assets/images/image";
 import { useState } from "react";
-import { ContactInfo } from "../constants/contact";
+import { ContactInfo } from "../../constants/contact";
 
 export default function Contact() {
   const [title, setTitle] = useState("");

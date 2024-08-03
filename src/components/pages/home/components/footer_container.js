@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
-import { ContactInfo } from "../../../constants/contact";
-import { ICP } from "../../../constants/constant";
+import { ContactInfo } from "../../../../constants/contact";
+import { ICP } from "../../../../constants/constant";
 
 export const FooterContainer = () => {
   return (

@@ -1,197 +1,40 @@
 import "./App.css";
-import Home from "./pages/home/Home";
-import { useEffect, useState } from "react";
-import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
-import About from "./pages/About";
+import Home from "./components/pages/home/Home";
+import { useEffect } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import About from "./components/pages/About";
 import {
   companyIcon,
   database1Icon,
   database2Icon,
-  logoIcon,
   workingIcon,
-} from "./imgs/image";
+} from "./assets/images/image";
 import { NAV_MENU } from "./constants/navBar";
-import { Avatar, Drawer, Paper, useMediaQuery } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import Projects from "./pages/projects/Projects";
-import Contact from "./pages/Contact";
-import Carousel from "react-material-ui-carousel";
-import { FooterContainer } from "./pages/home/components/footer_container";
-import Project from "./pages/projects/Project";
+import Projects from "./components/pages/Projects";
+import Contact from "./components/pages/Contact";
+import { FooterContainer } from "./components/pages/home/components/footer_container";
+import Project from "./components/pages/Project";
 import Login from "./components/common/Login";
 import AddProject from "./components/common/AddProject";
-import { useAtomValue } from "jotai";
-import { accessRoleAtom } from "./atoms/atom";
-import { VISITOR } from "./constants/constant";
-import { deepOrange } from "@mui/material/colors";
 import { Toaster } from "react-hot-toast";
+import NavBar from "./components/layout/NavBar";
+import CustomCarousel from "./components/common/CustomCarousel";
 
 function App() {
   const location = useLocation();
   const pathName = location.pathname;
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const accessRole = useAtomValue(accessRoleAtom);
-  const isMobileMatch = useMediaQuery("(max-width:600px)");
-
-  const toggleDrawer = (open) => {
-    setDrawerOpen(open);
-  };
-
-  const NavBar = () => {
-    return (
-      <>
-        {isMobileMatch ? (
-          <div>
-            <div
-              className="container d-flex justify-content-between"
-              style={{ height: "100px" }}
-            >
-              <div className="h-100 mx-5">
-                <img
-                  src={logoIcon}
-                  alt="logo"
-                  className="img-fluid w-100 h-100"
-                ></img>
-              </div>
-              <div className="h-100">
-                <MenuIcon
-                  className="w-50 h-100"
-                  onClick={() => toggleDrawer(true)}
-                ></MenuIcon>
-              </div>
-            </div>
-            <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-              <div className="text-center my-5" style={{ width: "50vw" }}>
-                {NAV_MENU.map((nav) => (
-                  <Link
-                    to={nav.path}
-                    onClick={() => {
-                      setDrawerOpen(false);
-                    }}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <p
-                      className={
-                        pathName.includes(nav.path)
-                          ? "nav-text-mobile clicked"
-                          : "nav-text-mobile"
-                      }
-                    >
-                      {nav.name}
-                    </p>
-                  </Link>
-                ))}
-                <div className="d-flex justify-content-center">
-                  <Link className="text-decoration-none" to={"login"}>
-                    {accessRole === VISITOR ? (
-                      <Avatar sx={{ width: 24, height: 24 }}>N</Avatar>
-                    ) : (
-                      <Avatar sx={{ bgcolor: deepOrange[500] }}>H</Avatar>
-                    )}
-                  </Link>
-                </div>
-              </div>
-            </Drawer>
-          </div>
-        ) : (
-          <div
-            className="d-flex justify-content-center"
-            style={{ height: "100px" }}
-          >
-            <div style={{ width: "10%" }}></div>
-            <div
-              style={{ width: "80%" }}
-              className="d-flex justify-content-center"
-            >
-              <div className="h-100 mx-5 d-flex align-items-center">
-                <img
-                  src={logoIcon}
-                  alt="logo"
-                  className="img-fluid w-100 h-75"
-                ></img>
-              </div>
-              <div className="nav-menu">
-                {NAV_MENU.map((nav) => (
-                  <Link to={nav.path} className="position-relative">
-                    <div
-                      className={
-                        pathName.includes(nav.path)
-                          ? "nav-text clicked px-5"
-                          : "nav-text px-5"
-                      }
-                      style={{ lineHeight: "100px" }}
-                    >
-                      {nav.name}
-                    </div>
-                    {pathName.includes(nav.path) && (
-                      <div className="nav-text-bottom-border"></div>
-                    )}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div
-              style={{ width: "10%" }}
-              className="d-flex justify-content-center align-items-center"
-            >
-              <Link className="text-decoration-none" to={"login"}>
-                {accessRole === VISITOR ? (
-                  <Avatar>H</Avatar>
-                ) : (
-                  <Avatar sx={{ bgcolor: deepOrange[500] }}>H</Avatar>
-                )}
-              </Link>
-            </div>
-          </div>
-        )}
-      </>
-    );
-  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathName]);
 
-  function HomeCarousel(props) {
-    var items = [
-      {
-        image: companyIcon,
-      },
-      {
-        image: workingIcon,
-      },
-      { image: database1Icon },
-      { image: database2Icon },
-    ];
-
-    return (
-      <Carousel navButtonsAlwaysVisible>
-        {items.map((item, i) => (
-          <Item key={i} item={item} />
-        ))}
-      </Carousel>
-    );
-  }
-  function Item(props) {
-    const imageUrl = props?.item?.image ?? logoIcon;
-    return (
-      <Paper
-        className="d-flex justify-content-center shadow-none"
-        style={{ maxHeight: "270px" }}
-      >
-        <img
-          src={imageUrl}
-          alt="projects_carousel"
-          className="img-fluid h-100"
-        ></img>
-      </Paper>
-    );
-  }
-
   return (
     <div>
-      <NavBar />
-      <HomeCarousel />
+      <NavBar></NavBar>
+      <CustomCarousel
+        images={[companyIcon, workingIcon, database1Icon, database2Icon]}
+        style={{ maxHeight: "270px" }}
+      ></CustomCarousel>
 
       <Routes>
         <Route path={"/"} element={<Navigate to="/home" />}></Route>

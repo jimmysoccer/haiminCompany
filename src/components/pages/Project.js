@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { NAV_MENU } from "../../constants/navBar";
 import { Grid } from "@mui/material";
-import CustomCarousel from "../../components/common/CustomCarousel";
+import CustomCarousel from "../common/CustomCarousel";
 
 export default function Project() {
   const location = useLocation();

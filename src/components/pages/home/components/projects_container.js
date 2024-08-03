@@ -1,6 +1,6 @@
 import { Button, CircularProgress, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import { getProjects } from "../../../services/get-projects";
+import { getProjects } from "../../../../services/get-projects";
 import { useEffect, useState } from "react";
 
 export const ProjectsContainer = () => {
