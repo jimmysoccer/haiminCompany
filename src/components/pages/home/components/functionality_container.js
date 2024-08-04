@@ -35,7 +35,9 @@ export const FunctionalityContainer = () => {
               </div>
               <div className="d-flex flex-column justify-content-center mx-4">
                 <h3 className="fs-4 fw-bold">数据库设计与建设</h3>
-                <p className="fs-6 fw-bold">简单介绍</p>
+                <p className="fs-6 fw-bold">
+                  构建高效、可靠的数据库系统，确保数据完整性和高性能
+                </p>
               </div>
             </div>
             <div className="d-flex justify-content-start">
@@ -44,7 +46,9 @@ export const FunctionalityContainer = () => {
               </div>
               <div className="d-flex flex-column justify-content-center mx-4">
                 <h3 className="fs-4 fw-bold">软件开发与定制</h3>
-                <p className="fs-6 fw-bold">简单介绍</p>
+                <p className="fs-6 fw-bold">
+                  提供量身定制的软件解决方案，从需求分析到部署全方位服务
+                </p>
               </div>
             </div>
             <div className="d-flex justify-content-start">
@@ -53,7 +57,9 @@ export const FunctionalityContainer = () => {
               </div>
               <div className="d-flex flex-column justify-content-center mx-4">
                 <h3 className="fs-4 fw-bold">数据迁移和优化</h3>
-                <p className="fs-6 fw-bold">简单介绍</p>
+                <p className="fs-6 fw-bold">
+                  安全高效地迁移数据，并优化数据库性能以提高系统响应速度
+                </p>
               </div>
             </div>
           </Grid>

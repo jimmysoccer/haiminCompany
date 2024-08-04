@@ -65,7 +65,7 @@ export default function NavBar() {
               <div className="d-flex justify-content-center">
                 <Link className="text-decoration-none" to={"login"}>
                   {accessRole === VISITOR ? (
-                    <Avatar sx={{ width: 24, height: 24 }}>N</Avatar>
+                    <Avatar>H</Avatar>
                   ) : (
                     <Avatar sx={{ bgcolor: deepOrange[500] }}>H</Avatar>
                   )}
