@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { useAtomValue } from "jotai";
 import { accessRoleAtom } from "../../atoms/atom";
 import { VISITOR } from "../../constants/constant";
+import { postVideos } from "../../services/post-videos";
 
 export default function AddProject() {
   const accessRole = useAtomValue(accessRoleAtom);
@@ -29,7 +30,7 @@ export default function AddProject() {
   const [startDate, setStartDate] = useState(dayjs());
   const [endDate, setEndDate] = useState(dayjs());
   const [imageFiles, setImageFiles] = useState([]);
-  const [previewVideos, setPreviewVideos] = useState([]);
+  const [videoFiles, setVideoFiles] = useState([]);
 
   if (accessRole === VISITOR) {
     navigate("/home");
@@ -46,13 +47,18 @@ export default function AddProject() {
   };
 
   const handleVideoChange = (e) => {
-    const videos = Array.from(e.target.files);
-    setPreviewVideos(videos.map((i) => URL.createObjectURL(i)));
+    let videos = Array.from(e.target.files);
+    if (videos.length === 0) return;
+    videos = videos.filter(
+      (video) => !videoFiles.map((a) => a.name).includes(video?.name)
+    );
+    setVideoFiles([...videoFiles, ...videos]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const imagePaths = imageFiles.map((image) => image.name).join(",");
+    const videoPaths = videoFiles.map((video) => video.name).join(",");
     const payload = {
       title,
       place,
@@ -60,9 +66,11 @@ export default function AddProject() {
       end_date: endDate.toISOString(),
       description,
       images: imagePaths,
+      videos: videoPaths,
     };
     try {
       if (imageFiles.length !== 0) await uploadImages(imageFiles);
+      if (!videoFiles.length !== 0) await uploadVideos(videoFiles);
       const res = await postProject(payload);
       const success = res.status;
       if (success) {
@@ -84,6 +92,15 @@ export default function AddProject() {
       console.error("upload images error", error);
     }
   };
+
+  const uploadVideos = async (videos) => {
+    try {
+      await postVideos(videos);
+    } catch (error) {
+      console.error("upload videos error", error);
+    }
+  };
+
   return (
     <div className="container text-center my-5">
       <h1>添加项目</h1>
@@ -170,7 +187,6 @@ export default function AddProject() {
         </div>
         <div className="container my-3">
           <Button
-            disabled
             component="label"
             role={undefined}
             variant="contained"
@@ -183,10 +199,13 @@ export default function AddProject() {
             <input className="d-none" type="file" multiple></input>
           </Button>
           <Grid container justifyContent={"center"}>
-            {previewVideos.map((video) => (
+            {videoFiles.map((video) => (
               <Grid item className="my-5 d-flex justify-content-center">
                 <video controls className="w-100">
-                  <source src={video} type="video/mp4"></source>
+                  <source
+                    src={`${URL.createObjectURL(video)}`}
+                    type="video/mp4"
+                  ></source>
                 </video>
               </Grid>
             ))}

@@ -23,6 +23,7 @@ import { postImages } from "../../services/post-images";
 import toast from "react-hot-toast";
 import { editProject } from "../../services/edit-project";
 import { NotFound } from "../common/NotFound";
+import { postVideos } from "../../services/post-videos";
 
 export default function Project() {
   const location = useLocation();
@@ -36,7 +37,7 @@ export default function Project() {
   const [startDate, setStartDate] = useState(dayjs(project?.start_date));
   const [endDate, setEndDate] = useState(dayjs(project?.end_date));
   const [imageFiles, setImageFiles] = useState(project?.images);
-  // const [previewVideos, setPreviewVideos] = useState(project?.videos);
+  const [videoFiles, setVideoFiles] = useState(project?.videos);
   const navigate = useNavigate();
 
   if (!project) return <NotFound></NotFound>;
@@ -58,12 +59,25 @@ export default function Project() {
     setImageFiles([...imageFiles, ...images]);
   };
 
+  const handleVideoChange = (e) => {
+    let videos = Array.from(e.target.files);
+    if (videos.length === 0) return;
+    videos = videos.filter(
+      (video) => !videoFiles.map((a) => a.name).includes(video?.name)
+    );
+    setVideoFiles([...videoFiles, ...videos]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const filteredImageFiles = imageFiles.filter(
       (image) => typeof image !== "string"
     );
+    const filteredVideoFiles = videoFiles.filter(
+      (video) => typeof video !== "string"
+    );
     const imagePaths = filteredImageFiles.map((image) => image.name).join(",");
+    const videoPaths = filteredVideoFiles.map((video) => video.name).join(",");
     const payload = {
       id: project.id,
       title,
@@ -72,11 +86,14 @@ export default function Project() {
       end_date: endDate.toISOString(),
       description,
       images: imagePaths,
+      videos: videoPaths,
     };
 
     try {
       if (filteredImageFiles.length !== 0)
         await uploadImages(filteredImageFiles);
+      if (filteredVideoFiles.length !== 0)
+        await uploadVideos(filteredVideoFiles);
       const res = await editProject(payload);
       const success = res.status;
       if (success) {
@@ -96,6 +113,13 @@ export default function Project() {
       await postImages(images);
     } catch (error) {
       console.error("upload images error", error);
+    }
+  };
+  const uploadVideos = async (video) => {
+    try {
+      await postVideos(video);
+    } catch (error) {
+      console.error("upload videos error", error);
     }
   };
 
@@ -223,16 +247,52 @@ export default function Project() {
             <CustomCarousel images={project.images}></CustomCarousel>
           )
         )}
-        {project.video ? (
-          <Grid container justifyContent={"center"}>
-            <Grid item className="my-5 d-flex justify-content-center">
-              <video controls className="w-100">
-                <source src={project.video} type="video/mp4"></source>
-              </video>
-            </Grid>
-          </Grid>
+        {editMode ? (
+          <div className="container my-3">
+            <Button
+              component="label"
+              role={undefined}
+              variant="contained"
+              className="my-3"
+              tabIndex={-1}
+              startIcon={<CloudUpload />}
+              onChange={(e) => handleVideoChange(e)}
+            >
+              上传视频
+              <input className="d-none" type="file" multiple></input>
+            </Button>
+            {videoFiles.map((video) => (
+              <Grid item className="my-5 d-flex justify-content-center">
+                <video controls className="w-100">
+                  <source
+                    src={
+                      typeof video === "string"
+                        ? video
+                        : URL.createObjectURL(video)
+                    }
+                    type="video/mp4"
+                  ></source>
+                </video>
+              </Grid>
+            ))}
+          </div>
         ) : (
-          ""
+          project?.videos?.length !== 0 && (
+            <Grid
+              container
+              justifyContent={"center"}
+              className="text-center mt-5"
+            >
+              <h1 className="w-100">示例视频</h1>
+              {project.videos.map((video) => (
+                <Grid item className="my-5 d-flex justify-content-center">
+                  <video controls className="w-100">
+                    <source src={video} type="video/mp4"></source>
+                  </video>
+                </Grid>
+              ))}
+            </Grid>
+          )
         )}
         {editMode && (
           <Button

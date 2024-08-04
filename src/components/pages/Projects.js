@@ -8,6 +8,7 @@ import { getProjects } from "../../services/get-projects";
 import { useEffect, useState } from "react";
 import { logoIcon } from "../../assets/images/image";
 import { deleteProject } from "../../services/delete-project";
+import PopUp from "../common/PopUp";
 
 export default function Projects() {
   const accessRole = useAtomValue(accessRoleAtom);
@@ -15,6 +16,8 @@ export default function Projects() {
 
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [clickedId, setClickedId] = useState(0);
 
   useEffect(() => {
     handleGetProjects();
@@ -31,13 +34,14 @@ export default function Projects() {
     }
   };
 
-  const handleDeleteProject = async (id) => {
+  const handleConfirm = async (id) => {
     try {
       setLoading(true);
       await deleteProject(id);
     } catch (error) {
     } finally {
       handleGetProjects();
+      setModalOpen(false);
     }
   };
 
@@ -77,7 +81,10 @@ export default function Projects() {
               {editor && (
                 <Button
                   variant="contained"
-                  onClick={() => handleDeleteProject(project?.id)}
+                  onClick={() => {
+                    setClickedId(project?.id);
+                    setModalOpen(true);
+                  }}
                 >
                   删除此项目
                 </Button>
@@ -86,6 +93,18 @@ export default function Projects() {
           ))
         )}
       </Grid>
+      {editor && (
+        <PopUp
+          title={"确认删除此项目吗?"}
+          content={""}
+          confirmText={"删除"}
+          cancelText={"取消"}
+          open={modalOpen}
+          handleClose={() => setModalOpen(false)}
+          confirmAction={() => handleConfirm(clickedId)}
+          cancelAction={() => setModalOpen(false)}
+        ></PopUp>
+      )}
     </div>
   );
 }
