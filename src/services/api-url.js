@@ -10,3 +10,5 @@ export const POST_PROJECT_URL = `${API_URL}/projects/upload_project`;
 export const EDIT_PROJECT_URL = `${API_URL}/projects/edit_project`;
 export const GET_PROJECT_URL = `${API_URL}/projects/get_projects`;
 export const DELETE_PROJECT_URL = `${API_URL}/projects/delete_project`;
+export const SEND_MESSAGES_URL = `${API_URL}/contact/send_messages`;
+export const GET_MESSAGES_URL = `${API_URL}/contact/get_messages`;

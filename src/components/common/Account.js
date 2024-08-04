@@ -6,16 +6,19 @@ import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
 import { getLoginAuth } from "../../services/get-login-auth";
 import { useAtom } from "jotai";
-import { accessRoleAtom } from "../../atoms/atom";
+import { accessRoleAtom, messagesAtom } from "../../atoms/atom";
 import { EDITOR, VISITOR } from "../../constants/constant";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { getMessages } from "../../services/messages-api";
+import dayjs from "dayjs";
 
-const Login = () => {
+const Account = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [accessRole, setAccessRole] = useAtom(accessRoleAtom);
   const [loginError, setLoginError] = useState(false);
+  const [messages, setMessages] = useAtom(messagesAtom);
 
   const navigate = useNavigate();
 
@@ -27,6 +30,7 @@ const Login = () => {
         setAccessRole(EDITOR);
         navigate("/home");
         toast.success("您已成功登录!");
+        handleGetMessages();
       } else {
         setAccessRole(VISITOR);
         setLoginError(true);
@@ -42,6 +46,15 @@ const Login = () => {
     setAccessRole(VISITOR);
     toast.error("您已退出登录!");
   };
+  const handleGetMessages = async () => {
+    try {
+      const res = await getMessages();
+      if (res.status === 200) {
+        setMessages(res.data?.messages);
+      }
+    } catch (error) {}
+  };
+
   return (
     <div className="container">
       <Grid container className="my-5 d-flex justify-content-center">
@@ -105,8 +118,37 @@ const Login = () => {
           </Box>
         </Grid>
       </Grid>
+      {accessRole === EDITOR && (
+        <Grid container className="my-5 text-center" direction={"column"}>
+          <h1>留言列表</h1>
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">标题</th>
+                <th scope="col">内容</th>
+                <th scope="col">邮箱地址</th>
+                <th scope="col">留言日期</th>
+              </tr>
+            </thead>
+            <tbody>
+              {messages.map((message) => (
+                <tr>
+                  <th scope="row">{message?.id}</th>
+                  <td>{message?.title}</td>
+                  <td style={{ maxWidth: "200px" }}>{message?.content}</td>
+                  <td>{message?.email}</td>
+                  <td>
+                    {dayjs(message?.sent_date).format("YYYY-MM-DD HH:mm:ss")}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Grid>
+      )}
     </div>
   );
 };
 
-export default Login;
+export default Account;

@@ -14,12 +14,12 @@ import Projects from "./components/pages/Projects";
 import Contact from "./components/pages/Contact";
 import { FooterContainer } from "./components/pages/home/components/footer_container";
 import Project from "./components/pages/Project";
-import Login from "./components/common/Login";
 import AddProject from "./components/common/AddProject";
 import { Toaster } from "react-hot-toast";
 import NavBar from "./components/layout/NavBar";
 import CustomCarousel from "./components/common/CustomCarousel";
 import { NotFound } from "./components/common/NotFound";
+import Account from "./components/common/Account";
 
 function App() {
   const location = useLocation();
@@ -48,7 +48,7 @@ function App() {
         <Route path={NAV_MENU[2].path} element={<Projects />}></Route>
         <Route path={NAV_MENU[2].path + "/:id"} element={<Project />}></Route>
         <Route path={NAV_MENU[3].path} element={<Contact />}></Route>
-        <Route path="login" element={<Login />}></Route>
+        <Route path="login" element={<Account />}></Route>
         <Route path="add_project" element={<AddProject />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

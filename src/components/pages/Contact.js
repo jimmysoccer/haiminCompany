@@ -1,7 +1,9 @@
 import { Button, Grid, TextField } from "@mui/material";
 import { workingIcon } from "../../assets/images/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ContactInfo } from "../../constants/contact";
+import toast from "react-hot-toast";
+import { sendMessages } from "../../services/messages-api";
 
 export default function Contact() {
   const [title, setTitle] = useState("");
@@ -12,13 +14,35 @@ export default function Contact() {
   const [commentError, setCommentError] = useState(false);
   const [emailError, setEmailError] = useState(false);
 
-  const handleSubmit = () => {
+  useEffect(() => {
     if (title === "") setTitleError(true);
     else setTitleError(false);
     if (comment === "") setCommentError(true);
     else setCommentError(false);
-    if (email === "") setEmailError(true);
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === "" || !emailPattern.test(email)) setEmailError(true);
     else setEmailError(false);
+  }, [title, comment, email]);
+
+  const handleSubmit = async () => {
+    if (titleError || commentError || emailError) return;
+
+    const payload = {
+      title,
+      content: comment,
+      email,
+    };
+    try {
+      const res = await sendMessages(payload);
+      if (res.status === 200) {
+        toast.success("留言发送成功，我们收到消息后会尽快回复您!");
+        setTitle("");
+        setComment("");
+        setEmail("");
+      } else {
+        toast.error("留言发送失败，请稍后重试！");
+      }
+    } catch (error) {}
   };
 
   return (
@@ -58,11 +82,12 @@ export default function Contact() {
             error={commentError}
             onChange={(e) => setComment(e.target.value)}
             multiline
-            rows={4}
+            minRows={4}
           ></TextField>
           <TextField
             className="w-100 p-2"
             required
+            type="email"
             label="联系邮箱"
             error={emailError}
             onChange={(e) => setEmail(e.target.value)}
