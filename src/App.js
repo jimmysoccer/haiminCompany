@@ -4,15 +4,14 @@ import { useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import About from "./components/pages/About";
 import {
-  companyIcon,
   database1Icon,
-  database2Icon,
+  dbInstallationIcon,
+  softwareDevelopmentIcon,
   workingIcon,
 } from "./assets/images/image";
 import { NAV_MENU } from "./constants/navBar";
 import Projects from "./components/pages/Projects";
 import Contact from "./components/pages/Contact";
-import { FooterContainer } from "./components/pages/home/components/footer_container";
 import Project from "./components/pages/Project";
 import AddProject from "./components/common/AddProject";
 import { Toaster } from "react-hot-toast";
@@ -20,6 +19,7 @@ import NavBar from "./components/layout/NavBar";
 import CustomCarousel from "./components/common/CustomCarousel";
 import { NotFound } from "./components/common/NotFound";
 import Account from "./components/common/Account";
+import { Footer } from "./components/layout/Footer";
 
 function App() {
   const location = useLocation();
@@ -33,8 +33,13 @@ function App() {
     <div>
       <NavBar></NavBar>
       <CustomCarousel
-        images={[companyIcon, workingIcon, database1Icon, database2Icon]}
-        style={{ maxHeight: "270px" }}
+        images={[
+          workingIcon,
+          database1Icon,
+          softwareDevelopmentIcon,
+          dbInstallationIcon,
+        ]}
+        style={{ maxHeight: "350px" }}
       ></CustomCarousel>
 
       <Routes>
@@ -53,7 +58,8 @@ function App() {
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
 
-      <FooterContainer />
+      {/* <FooterContainer /> */}
+      <Footer></Footer>
       <Toaster></Toaster>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Avatar, Drawer, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { logoIcon } from "../../assets/images/image";
+import { logoTextIcon } from "../../assets/images/image";
 import { useState } from "react";
 import { NAV_MENU } from "../../constants/navBar";
 import { Link, useLocation } from "react-router-dom";
@@ -29,7 +29,7 @@ export default function NavBar() {
           >
             <div className="h-100 mx-5">
               <img
-                src={logoIcon}
+                src={logoTextIcon}
                 alt="logo"
                 className="img-fluid w-100 h-100"
               ></img>
@@ -86,7 +86,7 @@ export default function NavBar() {
           >
             <div className="h-100 mx-5 d-flex align-items-center">
               <img
-                src={logoIcon}
+                src={logoTextIcon}
                 alt="logo"
                 className="img-fluid w-100 h-75"
               ></img>

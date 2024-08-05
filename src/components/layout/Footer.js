@@ -1,8 +1,9 @@
 import { Grid } from "@mui/material";
-import { ContactInfo } from "../../../../constants/contact";
-import { ICP } from "../../../../constants/constant";
+import { ContactInfo } from "../../constants/contact";
+import { ICP } from "../../constants/constant";
+import { logoTextIcon } from "../../assets/images/image";
 
-export const FooterContainer = () => {
+export const Footer = () => {
   return (
     <div
       className="text-center py-5 text-white"
@@ -27,6 +28,9 @@ export const FooterContainer = () => {
       <div className="w-100 h-1 border mb-5"></div>
       <Grid container justifyContent={"center"} flexDirection={"column"}>
         <div>海民科技 ©</div>
+        <div className="my-3">
+          <img src={logoTextIcon} alt="logo"></img>
+        </div>
         <div>
           <a href="https://beian.miit.gov.cn/" rel="noreferrer" target="_blank">
             {ICP}

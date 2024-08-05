@@ -1,6 +1,6 @@
 import { Button, Grid, TextField } from "@mui/material";
 import { workingIcon } from "../../assets/images/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ContactInfo } from "../../constants/contact";
 import toast from "react-hot-toast";
 import { sendMessages } from "../../services/messages-api";
@@ -14,17 +14,20 @@ export default function Contact() {
   const [commentError, setCommentError] = useState(false);
   const [emailError, setEmailError] = useState(false);
 
-  useEffect(() => {
-    if (title === "") setTitleError(true);
-    else setTitleError(false);
-    if (comment === "") setCommentError(true);
-    else setCommentError(false);
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email === "" || !emailPattern.test(email)) setEmailError(true);
-    else setEmailError(false);
-  }, [title, comment, email]);
-
   const handleSubmit = async () => {
+    if (title === "") {
+      setTitleError(true);
+      return;
+    } else setTitleError(false);
+    if (comment === "") {
+      setCommentError(true);
+      return;
+    } else setCommentError(false);
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === "" || !emailPattern.test(email)) {
+      setEmailError(true);
+      return;
+    } else setEmailError(false);
     if (titleError || commentError || emailError) return;
 
     const payload = {
