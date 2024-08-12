@@ -7,6 +7,7 @@ The website will be deployed on tencent cloud.
 1. React
 2. Bootstrap
 3. LottieFiles
+4. react-hot-toast
 
 ## Available Scripts
 
