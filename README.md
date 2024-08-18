@@ -1,12 +1,14 @@
 # haimin Company
 
 This is the repository for haimin company website. \
-The website will be deployed on tencent cloud.
+The website will be deployed on tencent cloud. \
+以获得上海备案。
 
 ## Tech used
 1. React
 2. Bootstrap
 3. LottieFiles
+4. react-hot-toast
 
 ## Available Scripts
 
