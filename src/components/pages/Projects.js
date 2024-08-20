@@ -66,9 +66,13 @@ export default function Projects() {
           projects.map((project) => (
             <Grid xs={12} item md={4} className="case px-5 my-3">
               <Link to={`/projects/${project.id}`} state={{ project }}>
-                <div className="mw-100 mh-200">
+                <div className="mw-100 mh-200 my-2">
                   <img
-                    style={{ maxHeight: "200px", maxWidth: "300px" }}
+                    style={{
+                      maxHeight: "200px",
+                      maxWidth: "300px",
+                      minHeight: "150px",
+                    }}
                     src={
                       project.images.length !== 0 ? project.images[0] : logoIcon
                     }

@@ -18,7 +18,8 @@ export const Footer = () => {
         <Grid item md={3} margin={2}>
           <p className="fs-5 fw-bold">联系我们</p>
           <p className="m-0">邮箱：{ContactInfo.email}</p>
-          <p className="m-0">电话：{ContactInfo.telephone}</p>
+          <p className="m-0">座机电话：{ContactInfo.telephone}</p>
+          <p className="m-0">移动电话：{ContactInfo.cellphone}</p>
         </Grid>
         <Grid item md={3} margin={2}>
           <p className="fs-5 fw-bold">关于我们</p>

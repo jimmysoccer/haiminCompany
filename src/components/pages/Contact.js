@@ -66,7 +66,8 @@ export default function Contact() {
           <h3>地址</h3>
           <p>{ContactInfo.address}</p>
           <h3>联系电话</h3>
-          <p>{ContactInfo.telephone}</p>
+          <p>座机电话：{ContactInfo.telephone}</p>
+          <p>移动电话：{ContactInfo.cellphone}</p>
           <h3>邮箱</h3>
           <p>{ContactInfo.email}</p>
         </Grid>
