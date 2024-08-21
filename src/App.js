@@ -39,7 +39,7 @@ function App() {
           softwareDevelopmentIcon,
           dbInstallationIcon,
         ]}
-        style={{ maxHeight: "350px" }}
+        height={500}
       ></CustomCarousel>
 
       <Routes>

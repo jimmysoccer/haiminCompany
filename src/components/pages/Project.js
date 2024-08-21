@@ -8,7 +8,6 @@ import {
   ImageListItem,
   TextField,
 } from "@mui/material";
-import CustomCarousel from "../common/CustomCarousel";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 import { useAtomValue } from "jotai";
@@ -191,9 +190,9 @@ export default function Project() {
             </div>
           ) : (
             <div className="text-center d-flex justify-content-between my-3">
-              <h3>{project.place}</h3>
-              <h3>开始时间:{" " + project.start_date}</h3>
-              <h3>结束时间:{" " + project.end_date}</h3>
+              <h4>{project.place}</h4>
+              <h4>开始时间:{" " + project.start_date}</h4>
+              <h4>结束时间:{" " + project.end_date}</h4>
             </div>
           )}
         </div>
@@ -244,7 +243,22 @@ export default function Project() {
           </div>
         ) : (
           project?.images?.length !== 0 && (
-            <CustomCarousel images={project.images}></CustomCarousel>
+            // <CustomCarousel
+            //   images={project.images}
+            //   height={500}
+            // ></CustomCarousel>
+            <ImageList cols={2} gap={20}>
+              {project.images.map((image, index) => (
+                <ImageListItem key={`project-${index}`}>
+                  <img
+                    style={{ objectFit: "fill" }}
+                    src={image}
+                    alt={`project-${index}`}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList>
           )
         )}
         {editMode ? (
