@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { NAV_MENU } from "../../constants/navBar";
 import {
   Button,
+  CircularProgress,
   Grid,
   IconButton,
   ImageList,
@@ -17,12 +18,15 @@ import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { CloudUpload } from "@mui/icons-material";
+import { ArrowDownward, ArrowUpward, CloudUpload } from "@mui/icons-material";
 import { postImages } from "../../services/post-images";
 import toast from "react-hot-toast";
 import { editProject } from "../../services/edit-project";
 import { NotFound } from "../common/NotFound";
 import { postVideos } from "../../services/post-videos";
+
+const IMAGE_TYPE = "image_type";
+const VIDEO_TYPE = "video_type";
 
 export default function Project() {
   const location = useLocation();
@@ -37,12 +41,16 @@ export default function Project() {
   const [endDate, setEndDate] = useState(dayjs(project?.end_date));
   const [imageFiles, setImageFiles] = useState(project?.images);
   const [videoFiles, setVideoFiles] = useState(project?.videos);
+  const [imageLoading, setImageLoading] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(false);
   const navigate = useNavigate();
 
   if (!project) return <NotFound></NotFound>;
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
+    setImageFiles(project?.images);
+    setVideoFiles(project?.videos);
   };
 
   const changeTitle = (e) => {
@@ -52,19 +60,25 @@ export default function Project() {
   const handleImageChange = (e) => {
     let images = Array.from(e.target.files);
     if (images.length === 0) return;
-    images = images.filter(
-      (image) => !imageFiles.map((a) => a.name).includes(image?.name)
-    );
     setImageFiles([...imageFiles, ...images]);
+  };
+
+  const handleRemoveImage = async (index) => {
+    setImageLoading(true);
+    await setImageFiles((prev) => prev.filter((item, i) => i !== index));
+    setImageLoading(false);
   };
 
   const handleVideoChange = (e) => {
     let videos = Array.from(e.target.files);
     if (videos.length === 0) return;
-    videos = videos.filter(
-      (video) => !videoFiles.map((a) => a.name).includes(video?.name)
-    );
     setVideoFiles([...videoFiles, ...videos]);
+  };
+
+  const handleRemoveVideo = async (index) => {
+    setVideoLoading(true);
+    await setVideoFiles((prev) => prev.filter((item, i) => i !== index));
+    setVideoLoading(false);
   };
 
   const handleSubmit = async (e) => {
@@ -75,8 +89,21 @@ export default function Project() {
     const filteredVideoFiles = videoFiles.filter(
       (video) => typeof video !== "string"
     );
-    const imagePaths = filteredImageFiles.map((image) => image.name).join(",");
-    const videoPaths = filteredVideoFiles.map((video) => video.name).join(",");
+    const imagePaths = imageFiles
+      .map((image) =>
+        (image?.name ?? image)
+          .split("https://www.sh-haimin.cn/api/images/")
+          .join("")
+      )
+      .join(",");
+
+    const videoPaths = videoFiles
+      .map((video) =>
+        (video?.name ?? video)
+          .split("https://www.sh-haimin.cn/api/videos/")
+          .join("")
+      )
+      .join(",");
     const payload = {
       id: project.id,
       title,
@@ -89,11 +116,16 @@ export default function Project() {
     };
 
     try {
+      const savingToastId = toast.loading("上传中...");
+
       if (filteredImageFiles.length !== 0)
         await uploadImages(filteredImageFiles);
       if (filteredVideoFiles.length !== 0)
         await uploadVideos(filteredVideoFiles);
       const res = await editProject(payload);
+
+      toast.dismiss(savingToastId);
+
       const success = res.status;
       if (success) {
         toast.success(`成功修改${payload.title}项目`);
@@ -120,6 +152,27 @@ export default function Project() {
     } catch (error) {
       console.error("upload videos error", error);
     }
+  };
+
+  const handleUpOrder = (i, type) => {
+    if (i === 0) return;
+    const temp = [...(type === IMAGE_TYPE ? imageFiles : videoFiles)];
+    [temp[i], temp[i - 1]] = [temp[i - 1], temp[i]];
+
+    if (type === IMAGE_TYPE) setImageFiles(temp);
+    else setVideoFiles(temp);
+  };
+  const handleDownOrder = (i, type) => {
+    if (
+      (type === IMAGE_TYPE && i === imageFiles.length - 1) ||
+      (type === VIDEO_TYPE && i === videoFiles.length - 1)
+    )
+      return;
+    const temp = [...(type === IMAGE_TYPE ? imageFiles : videoFiles)];
+    [temp[i], temp[i + 1]] = [temp[i + 1], temp[i]];
+
+    if (type === IMAGE_TYPE) setImageFiles(temp);
+    else setVideoFiles(temp);
   };
 
   return (
@@ -224,21 +277,48 @@ export default function Project() {
               上传照片
               <input className="d-none" type="file" multiple></input>
             </Button>
-            <ImageList cols={2} rowHeight={400}>
-              {imageFiles.map((image, index) => (
-                <ImageListItem key={`preview-${index}`}>
-                  <img
-                    style={{ objectFit: "fill" }}
-                    src={
-                      typeof image === "string"
-                        ? image
-                        : URL.createObjectURL(image)
-                    }
-                    alt={`preview-${index}`}
-                    loading="lazy"
-                  />
-                </ImageListItem>
-              ))}
+            <ImageList cols={2} gap={20}>
+              {imageLoading ? (
+                <CircularProgress></CircularProgress>
+              ) : (
+                imageFiles.map((image, index) => (
+                  <ImageListItem key={`preview-${index}`}>
+                    <img
+                      style={{ objectFit: "fill" }}
+                      src={
+                        typeof image === "string"
+                          ? image
+                          : URL.createObjectURL(image)
+                      }
+                      alt={`preview-${index}`}
+                      loading="lazy"
+                    />
+                    <div className="d-flex justify-content-center">
+                      <Button
+                        className="mt-2 mx-2"
+                        variant="contained"
+                        onClick={() => handleUpOrder(index, IMAGE_TYPE)}
+                      >
+                        <ArrowUpward></ArrowUpward>
+                      </Button>
+                      <Button
+                        className="mt-2 bg-danger"
+                        variant="contained"
+                        onClick={() => handleRemoveImage(index)}
+                      >
+                        删除
+                      </Button>
+                      <Button
+                        className="mt-2 mx-2"
+                        variant="contained"
+                        onClick={() => handleDownOrder(index, IMAGE_TYPE)}
+                      >
+                        <ArrowDownward></ArrowDownward>
+                      </Button>
+                    </div>
+                  </ImageListItem>
+                ))
+              )}
             </ImageList>
           </div>
         ) : (
@@ -275,20 +355,34 @@ export default function Project() {
               上传视频
               <input className="d-none" type="file" multiple></input>
             </Button>
-            {videoFiles.map((video) => (
-              <Grid item className="my-5 d-flex justify-content-center">
-                <video controls className="w-100">
-                  <source
-                    src={
-                      typeof video === "string"
-                        ? video
-                        : URL.createObjectURL(video)
-                    }
-                    type="video/mp4"
-                  ></source>
-                </video>
-              </Grid>
-            ))}
+            {videoLoading ? (
+              <CircularProgress></CircularProgress>
+            ) : (
+              videoFiles.map((video, index) => (
+                <Grid
+                  item
+                  className="my-5 d-flex flex-column justify-content-center align-items-center"
+                >
+                  <video controls className="w-100">
+                    <source
+                      src={
+                        typeof video === "string"
+                          ? video
+                          : URL.createObjectURL(video)
+                      }
+                      type="video/mp4"
+                    ></source>
+                  </video>
+                  <Button
+                    className="mt-2 w-25 bg-danger"
+                    variant="contained"
+                    onClick={() => handleRemoveVideo(index)}
+                  >
+                    删除
+                  </Button>
+                </Grid>
+              ))
+            )}
           </div>
         ) : (
           project?.videos?.length !== 0 && (
