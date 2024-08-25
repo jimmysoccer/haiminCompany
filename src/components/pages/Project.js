@@ -147,10 +147,6 @@ export default function Project() {
         maxWidthOrHeight: 1024,
         useWebWorker: true,
       };
-      console.log("images", images);
-      // const compressedImageFiles = await Promise.all(
-      //   images.map((image) => imageCompression(image, options))
-      // );
       const compressedImageFiles = await Promise.all(
         images.map(async (image, index) => {
           const compressedBlob = await imageCompression(image, options);
@@ -164,15 +160,6 @@ export default function Project() {
 
           return compressedFile;
         })
-      );
-
-      console.log("compressed image files", compressedImageFiles);
-
-      console.log("Original file size:", images[0].size / 1024 / 1024, "MB");
-      console.log(
-        "Compressed file size:",
-        compressedImageFiles[0].size / 1024 / 1024,
-        "MB"
       );
 
       await postImages(compressedImageFiles);
