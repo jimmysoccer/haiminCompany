@@ -24,6 +24,7 @@ import toast from "react-hot-toast";
 import { editProject } from "../../services/edit-project";
 import { NotFound } from "../common/NotFound";
 import { postVideos } from "../../services/post-videos";
+import imageCompression from "browser-image-compression";
 
 const IMAGE_TYPE = "image_type";
 const VIDEO_TYPE = "video_type";
@@ -141,7 +142,40 @@ export default function Project() {
 
   const uploadImages = async (images) => {
     try {
-      await postImages(images);
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1024,
+        useWebWorker: true,
+      };
+      console.log("images", images);
+      // const compressedImageFiles = await Promise.all(
+      //   images.map((image) => imageCompression(image, options))
+      // );
+      const compressedImageFiles = await Promise.all(
+        images.map(async (image, index) => {
+          const compressedBlob = await imageCompression(image, options);
+
+          // Convert the Blob to a File
+          const compressedFile = new File(
+            [compressedBlob],
+            `${image.name}`, // You can customize the file name and extension
+            { type: compressedBlob.type }
+          );
+
+          return compressedFile;
+        })
+      );
+
+      console.log("compressed image files", compressedImageFiles);
+
+      console.log("Original file size:", images[0].size / 1024 / 1024, "MB");
+      console.log(
+        "Compressed file size:",
+        compressedImageFiles[0].size / 1024 / 1024,
+        "MB"
+      );
+
+      await postImages(compressedImageFiles);
     } catch (error) {
       console.error("upload images error", error);
     }
