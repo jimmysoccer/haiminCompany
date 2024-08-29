@@ -23,7 +23,7 @@ export default function About() {
           className="container"
           style={{ height: "300px", overflow: "hidden" }}
         >
-          <img src={workingIcon} className="img-fluid"></img>
+          <img src={workingIcon} alt="about" className="img-fluid"></img>
         </div>
       </div>
     </div>
