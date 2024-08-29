@@ -10,6 +10,10 @@ import database2 from "./database2.jpg";
 import notFound from "./error.png";
 import softwareDevelopment from "./sd.jpg";
 import db_instalation from "./db_installation.webp";
+import display1 from "./display1.jpg";
+import display2 from "./display2.jpg";
+import display3 from "./display3.jpg";
+import display4 from "./display4.jpg";
 
 export const computerScreenIcon = computerScreen;
 export const intranetIcon = intranet;
@@ -23,3 +27,7 @@ export const database2Icon = database2;
 export const notFoundIcon = notFound;
 export const softwareDevelopmentIcon = softwareDevelopment;
 export const dbInstallationIcon = db_instalation;
+export const display1Icon = display1;
+export const display2Icon = display2;
+export const display3Icon = display3;
+export const display4Icon = display4;

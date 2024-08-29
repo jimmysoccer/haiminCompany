@@ -6,6 +6,10 @@ import About from "./components/pages/About";
 import {
   database1Icon,
   dbInstallationIcon,
+  display1Icon,
+  display2Icon,
+  display3Icon,
+  display4Icon,
   softwareDevelopmentIcon,
   workingIcon,
 } from "./assets/images/image";
@@ -34,8 +38,10 @@ function App() {
       <NavBar></NavBar>
       <CustomCarousel
         images={[
-          workingIcon,
-          database1Icon,
+          display1Icon,
+          display2Icon,
+          display3Icon,
+          display4Icon,
           softwareDevelopmentIcon,
           dbInstallationIcon,
         ]}
