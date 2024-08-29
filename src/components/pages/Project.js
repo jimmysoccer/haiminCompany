@@ -344,10 +344,6 @@ export default function Project() {
           </div>
         ) : (
           project?.images?.length !== 0 && (
-            // <CustomCarousel
-            //   images={project.images}
-            //   height={500}
-            // ></CustomCarousel>
             <ImageList cols={2} gap={20}>
               {project.images.map((image, index) => (
                 <ImageListItem key={`project-${index}`}>

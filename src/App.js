@@ -4,14 +4,12 @@ import { useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import About from "./components/pages/About";
 import {
-  database1Icon,
   dbInstallationIcon,
   display1Icon,
   display2Icon,
   display3Icon,
   display4Icon,
   softwareDevelopmentIcon,
-  workingIcon,
 } from "./assets/images/image";
 import { NAV_MENU } from "./constants/navBar";
 import Projects from "./components/pages/Projects";
