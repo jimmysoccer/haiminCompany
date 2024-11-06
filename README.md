@@ -28,6 +28,6 @@ Deploy the app to https://jimmysoccer.github.io/haiminCompany.
 
 ## References
 
-https://about.google/
+https://about.google/ \
 https://info.gartnerdigitalmarkets.com/axero-gdm-lp/?category=Intranet&utm_source=capterra \
 https://c1953038906.scd.wezhan.cn/sy
