@@ -281,7 +281,9 @@ export default function Project() {
             onChange={(e) => setDescription(e.target.value)}
           ></TextField>
         ) : (
-          descriptions?.map((des) => <p className="text-secondary">{des}</p>)
+          descriptions?.map((des) => (
+            <p className="text-start text-secondary">{des}</p>
+          ))
         )}
 
         {editMode ? (

@@ -14,6 +14,9 @@ import display1 from "./display1.jpg";
 import display2 from "./display2.jpg";
 import display3 from "./display3.jpg";
 import display4 from "./display4.jpg";
+import pointer1 from "./pointer_1.svg";
+import pointer2 from "./pointer_2.svg";
+import pointer3 from "./pointer_3.svg";
 
 export const computerScreenIcon = computerScreen;
 export const intranetIcon = intranet;
@@ -31,3 +34,6 @@ export const display1Icon = display1;
 export const display2Icon = display2;
 export const display3Icon = display3;
 export const display4Icon = display4;
+export const pointer1Icon = pointer1;
+export const pointer2Icon = pointer2;
+export const pointer3Icon = pointer3;

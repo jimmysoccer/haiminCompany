@@ -1,66 +1,56 @@
 import { Grid } from "@mui/material";
-import LooksOneRoundedIcon from "@mui/icons-material/LooksOneRounded";
-import LooksTwoRoundedIcon from "@mui/icons-material/LooksTwoRounded";
-import Looks3RoundedIcon from "@mui/icons-material/Looks3Rounded";
 import aboutAnimation from "../../../../assets/about.json";
 import Lottie from "lottie-react";
+import {
+  pointer1Icon,
+  pointer2Icon,
+  pointer3Icon,
+} from "../../../../assets/images/image";
 
 export const FunctionalityContainer = () => {
   return (
-    <div className="bg-primary-subtle">
+    <div style={{ backgroundColor: "#F4F6FC", padding: "80px 0" }}>
       <div className="container text-center pb-5">
-        <h1 className="fs-2 fw-bold pt-5 pb-5">专业数据库与软件解决方案</h1>
-        <Grid container justifyContent={"center"} padding={2}>
+        <Grid container justifyContent={"center"}>
           <Grid
             item
             xs={12}
-            md={4}
-            className="d-flex mx-5 justify-content-center"
+            md={6}
+            className="d-flex flex-column justify-content-center"
           >
-            <div className="container d-flex">
-              <Lottie
-                className="img-fluid"
-                animationData={aboutAnimation}
-              ></Lottie>
-            </div>
+            <h1 className="fs-2 fw-bold pt-5 pb-5">我们的核心业务领域</h1>
+            <Lottie
+              className="img-fluid"
+              animationData={aboutAnimation}
+              style={{ width: "500px" }}
+            ></Lottie>
           </Grid>
           <Grid
             item
-            md={4}
-            className="container m-5 d-flex flex-column justify-content-center"
+            xs={12}
+            md={6}
+            className="container d-flex flex-wrap justify-content-start"
           >
-            <div className="d-flex justify-content-start">
-              <div className="w-25">
-                <LooksOneRoundedIcon className="mt-1"></LooksOneRoundedIcon>
-              </div>
-              <div className="d-flex flex-column justify-content-center mx-4">
-                <h3 className="fs-4 fw-bold">数据库设计与建设</h3>
-                <p className="fs-6 fw-bold">
-                  构建高效、可靠的数据库系统，确保数据完整性和高性能
-                </p>
-              </div>
+            <div className="d-flex flex-column align-items-start text-start w-50 mt-5 p-2">
+              <img src={pointer1Icon} alt="pointer 1"></img>
+              <h3 className="fw-bold my-2">数据库设计</h3>
+              <h5 className="text-secondary fw-bold">
+                构建高效可靠数据库，确保数据完整性与高性能
+              </h5>
             </div>
-            <div className="d-flex justify-content-start">
-              <div className="w-25">
-                <LooksTwoRoundedIcon className="mt-1"></LooksTwoRoundedIcon>
-              </div>
-              <div className="d-flex flex-column justify-content-center mx-4">
-                <h3 className="fs-4 fw-bold">软件开发与定制</h3>
-                <p className="fs-6 fw-bold">
-                  提供量身定制的软件解决方案，从需求分析到部署全方位服务
-                </p>
-              </div>
+            <div className="d-flex flex-column align-items-start text-start w-50 mt-5 p-2">
+              <img src={pointer2Icon} alt="pointer 1"></img>
+              <h3 className="fw-bold my-2">软件开发</h3>
+              <h5 className="text-secondary fw-bold">
+                定制化软件解决方案，从需求分析到部署全覆盖
+              </h5>
             </div>
-            <div className="d-flex justify-content-start">
-              <div className="w-25">
-                <Looks3RoundedIcon className="mt-1"></Looks3RoundedIcon>
-              </div>
-              <div className="d-flex flex-column justify-content-center mx-4">
-                <h3 className="fs-4 fw-bold">数据迁移和优化</h3>
-                <p className="fs-6 fw-bold">
-                  安全高效地迁移数据，并优化数据库性能以提高系统响应速度
-                </p>
-              </div>
+            <div className="d-flex flex-column align-items-start text-start w-50 mt-5 p-2">
+              <img src={pointer3Icon} alt="pointer 1"></img>
+              <h3 className="fw-bold my-2">数据迁移</h3>
+              <h5 className="text-secondary fw-bold">
+                安全高效迁移数据，优化性能提升系统响应
+              </h5>
             </div>
           </Grid>
         </Grid>

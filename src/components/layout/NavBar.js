@@ -8,6 +8,7 @@ import { useAtomValue } from "jotai";
 import { accessRoleAtom } from "../../atoms/atom";
 import { VISITOR } from "../../constants/constant";
 import { deepOrange } from "@mui/material/colors";
+import { TINT_BLUE } from "../../constants/colors";
 
 export default function NavBar() {
   const isMobileMatch = useMediaQuery("(max-width:600px)");
@@ -77,7 +78,11 @@ export default function NavBar() {
       ) : (
         <div
           className="d-flex justify-content-center"
-          style={{ height: "100px" }}
+          style={{
+            height: "100px",
+            backgroundColor: TINT_BLUE,
+            color: "white",
+          }}
         >
           <div style={{ width: "10%" }}></div>
           <div

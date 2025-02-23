@@ -132,9 +132,9 @@ const Account = () => {
               </tr>
             </thead>
             <tbody>
-              {messages.map((message) => (
+              {messages.reverse().map((message, index) => (
                 <tr>
-                  <th scope="row">{message?.id}</th>
+                  <th scope="row">{index + 1}</th>
                   <td>{message?.title}</td>
                   <td style={{ maxWidth: "200px" }}>{message?.content}</td>
                   <td>{message?.email}</td>
