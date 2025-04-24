@@ -1,5 +1,6 @@
 import { Building, Users, Rocket, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { CustomerComments } from '@/constants/comments';
 
 const About = () => {
   const stats = [
@@ -94,6 +95,36 @@ const About = () => {
                 </span>
               </li>
             </ul>
+          </div>
+        </div>
+
+        <div className='mt-16'>
+          <h2 className='text-3xl font-bold text-[#0A2647] mb-6 text-center'>
+            我们的愿景
+          </h2>
+          <p className='text-gray-600 text-center max-w-3xl mx-auto'>
+            致力于成为行业领先的数字化基础设施服务提供商,通过技术创新和卓越服务,推动客户业务的持续增长与成功。
+          </p>
+        </div>
+
+        <div className='mt-16'>
+          <h2 className='text-3xl font-bold text-[#0A2647] mb-6 text-center'>
+            客户评价
+          </h2>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {CustomerComments.map((testimonial, index) => (
+              <div
+                key={index}
+                className='p-6 border rounded-lg shadow-sm hover:shadow-lg transition-shadow'
+              >
+                <p className='text-gray-600 italic mb-4'>
+                  “{testimonial.quote}”
+                </p>
+                <p className='text-gray-800 font-semibold text-right'>
+                  — {testimonial.author}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Copyright } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import { ContactInfo } from '@/constants/contact';
+import { NAV_MENU } from '@/constants/navBar';
+import { ICP } from '@/constants/constant';
 
 const Footer = () => {
   return (
@@ -19,34 +21,34 @@ const Footer = () => {
             <ul className='space-y-2'>
               <li>
                 <Link
-                  to='/'
+                  to={NAV_MENU.home.path}
                   className='text-gray-300 hover:text-white transition-colors'
                 >
-                  首页
+                  {NAV_MENU.home.name}
                 </Link>
               </li>
               <li>
                 <Link
-                  to='/about'
+                  to={NAV_MENU.about.path}
                   className='text-gray-300 hover:text-white transition-colors'
                 >
-                  关于我们
+                  {NAV_MENU.about.name}
                 </Link>
               </li>
               <li>
                 <Link
-                  to='/products'
+                  to={NAV_MENU.projects.path}
                   className='text-gray-300 hover:text-white transition-colors'
                 >
-                  产品中心
+                  {NAV_MENU.projects.name}
                 </Link>
               </li>
               <li>
                 <Link
-                  to='/contact'
+                  to={NAV_MENU.contact.path}
                   className='text-gray-300 hover:text-white transition-colors'
                 >
-                  联系我们
+                  {NAV_MENU.contact.name}
                 </Link>
               </li>
             </ul>
@@ -57,15 +59,25 @@ const Footer = () => {
             <ul className='space-y-2'>
               <li className='flex items-center space-x-2'>
                 <MapPin className='h-5 w-5' />
-                <span className='text-gray-300'>{ContactInfo.address}</span>
+                <span className='text-gray-300'>
+                  {ContactInfo.address.info}
+                </span>
               </li>
               <li className='flex items-center space-x-2'>
                 <Phone className='h-5 w-5' />
-                <span className='text-gray-300'>{ContactInfo.cellphone}</span>
+                <span className='text-gray-300'>
+                  {ContactInfo.cellphone.info}
+                </span>
+              </li>
+              <li className='flex items-center space-x-2'>
+                <Phone className='h-5 w-5' />
+                <span className='text-gray-300'>
+                  {ContactInfo.telephone.info}
+                </span>
               </li>
               <li className='flex items-center space-x-2'>
                 <Mail className='h-5 w-5' />
-                <span className='text-gray-300'>{ContactInfo.email}</span>
+                <span className='text-gray-300'>{ContactInfo.email.info}</span>
               </li>
             </ul>
           </div>
@@ -80,11 +92,16 @@ const Footer = () => {
 
         <div className='mt-8 pt-8 border-t border-gray-700'>
           <div className='flex items-center justify-center space-x-2 text-gray-300'>
-            <Copyright className='h-4 w-4' />
-            <span>{new Date().getFullYear()} 上海海民科技有限公司</span>
+            <span>上海海民科技有限公司</span>
           </div>
           <div className='flex items-center justify-center space-x-2 text-gray-300'>
-            <span>沪ICP备2024076227号</span>
+            <a
+              href='https://beian.miit.gov.cn/'
+              rel='noreferrer'
+              target='_blank'
+            >
+              {ICP}
+            </a>
           </div>
         </div>
       </div>

@@ -1,197 +1,136 @@
-import { Database, Code, Server, Rocket, ChartBar, Box } from 'lucide-react';
+import {
+  guanlongSchoolImages,
+  intelligentPumpImages,
+  szuhHospitalImages,
+  zhentongDatacenterImages,
+  zhentongDatacenterVideo,
+} from '@/assets/image';
+import { Database } from 'lucide-react';
 export const PROJECTS = [
   {
-    id: 'enterprise-database',
-    title: 'Enterprise Database Suite',
+    id: 'zhentong-datacenter',
+    title: '深圳证通数据中心(平安银行光明数据机房)',
     description:
-      'High-performance database management system with real-time analytics and automatic scaling.',
+      '平安银行金融A类数据中心,配备机器人巡视与高效冷通道系统,支持全天候运行监控。',
     icon: <Database className='h-12 w-12 text-[#2C74B3] mb-4' />,
     features: [
-      'Automated backup',
-      'Real-time monitoring',
-      'Data encryption',
-      '24/7 support',
+      '1200个标准机柜',
+      '42个冷通道系统',
+      '机器人巡视及配电巡查',
+      '24小时设备监控',
     ],
     details: {
       overview:
-        'Our Enterprise Database Suite is a comprehensive solution designed for businesses that require robust, scalable, and secure database management. Built with modern architecture and cutting-edge technology, it provides seamless data handling capabilities for enterprises of all sizes.',
+        '本项目为平安银行光明数据中心机房,位于深圳光明证通电子产业园,属于高等级金融A类数据中心。三个楼层共部署近1200个机柜及42个冷通道系统,其中部分区域配备机器人巡视系统,保障设备高效稳定运行。',
       benefits: [
-        'Improved data security and compliance',
-        'Reduced operational costs',
-        'Enhanced performance and scalability',
-        'Simplified database management',
-        'Automated maintenance and updates',
+        '全天候运行设备保障',
+        '机器人巡视提升运维效率',
+        '高密度冷通道散热设计',
+        '一次性验收合格,可靠交付',
+        '降低人工运维成本',
       ],
       specifications: [
-        'Cloud-native architecture',
-        'Multi-region deployment support',
-        'Real-time backup and recovery',
-        'Advanced encryption standards',
-        'Comprehensive monitoring and alerts',
+        '三层楼近1200个标准机柜',
+        '42个冷通道(含11个机器人巡视冷通道)',
+        '配电房机器人自动巡查',
+        '冷通道动环与电力母线安装调试',
+        '项目周期:2020-08-04 至 2020-12-07',
       ],
       media: {
-        images: [
-          '/photo-1488590528505-98d2b5aba04b.jpg',
-          '/photo-1518770660439-4636190af475.jpg',
-          '/photo-1461749280684-dccba630e2f6.jpg',
-        ],
-        video: 'https://example.com/database-demo.mp4',
+        images: zhentongDatacenterImages,
+        video: zhentongDatacenterVideo,
+      },
+    },
+  },
+
+  {
+    id: 'guanlong-school-datacenter',
+    title: '深圳市南山区官龙学校教学数据中心',
+    description: '为日常教学提供恒温恒湿环境的数据中心,配备UPS保障供电稳定性。',
+    icon: <Database className='h-12 w-12 text-[#2C74B3] mb-4' />,
+    features: ['16个机柜位', '3台精密空调', '冷通道恒温恒湿', '3台UPS持续供电'],
+    details: {
+      overview:
+        '项目位于南山区官龙学校,建设一个保障教学运行的专用数据中心机房。通过精密空调和UPS系统,保证机房运行环境稳定可靠。',
+      benefits: [
+        '保障教学系统7x24不间断运行',
+        '恒温恒湿的运行环境',
+        'UPS系统应对突发停电',
+        '提升校园信息化基础设施',
+      ],
+      specifications: [
+        '16个标准机柜',
+        '1个网络机柜 + 1个列头柜',
+        '3台精密空调',
+        '2台60KVA + 1台80KVA UPS',
+        '项目周期:2024-05-13 至 2024-07-13',
+      ],
+      media: {
+        images: guanlongSchoolImages,
       },
     },
   },
   {
-    id: 'cloud-migration',
-    title: 'Cloud Migration Tool',
-    description:
-      'Seamless data migration solution for enterprise-scale databases with zero downtime.',
-    icon: <Server className='h-12 w-12 text-[#2C74B3] mb-4' />,
+    id: 'szuh-hospital-iot',
+    title: '深圳大学附属华南医院智慧管理',
+    description: '基于物联网与智能监控系统,提升医院设备管理与安全性能。',
+    icon: <Database className='h-12 w-12 text-[#2C74B3] mb-4' />,
     features: [
-      'Zero downtime migration',
-      'Data integrity checks',
-      'Rollback capabilities',
-      'Progress tracking',
+      '智能在线监测系统',
+      '物联网设备接入',
+      '覆盖多部门科室',
+      '24小时远程监控',
     ],
     details: {
       overview:
-        'Our Cloud Migration Tool is designed to facilitate the seamless migration of enterprise-scale databases to the cloud with zero downtime. It ensures data integrity and provides rollback capabilities, making the migration process smooth and reliable.',
+        '项目通过物联网技术和智能化设备改造,实现医院多科室的智慧管理,提升管理效率与设备安全。',
       benefits: [
-        'Seamless cloud migration with zero downtime',
-        'Ensured data integrity during migration',
-        'Reduced risk with rollback capabilities',
-        'Improved efficiency with progress tracking',
-        'Cost-effective migration solution',
+        '减少人工巡检频率',
+        '工程部远程值守实时监控',
+        '提升医疗设备运行稳定性',
+        '涵盖全院关键区域',
       ],
       specifications: [
-        'Support for various cloud platforms',
-        'Automated data validation',
-        'Real-time monitoring',
-        'Secure data transfer',
-        'Scalable architecture',
+        '覆盖区域:住院部、门急诊、血液中心等',
+        '核心设备:热水机房、电梯、UPS等',
+        '使用光纤、超六类网线、无线网桥实现联网',
+        '项目周期:2023-05-12 至 2023-07-14',
       ],
+      media: {
+        images: szuhHospitalImages,
+      },
     },
   },
   {
-    id: 'custom-software',
-    title: 'Custom Software Solutions',
+    id: 'intelligent-pump-room',
+    title: '智能化水泵房建设',
     description:
-      'Tailored software development services for your specific business needs.',
-    icon: <Code className='h-12 w-12 text-[#2C74B3] mb-4' />,
+      '为生活区、办公区、公寓区水泵房提供电力、安防与智能化系统施工。',
+    icon: <Database className='h-12 w-12 text-[#2C74B3] mb-4' />,
     features: [
-      'Web applications',
-      'Mobile solutions',
-      'API integration',
-      'Legacy system modernization',
+      '3个区域水泵房',
+      '电力桥架与电缆铺设',
+      '安防视频监控安装',
+      '智能控制系统调试',
     ],
     details: {
       overview:
-        'We offer custom software solutions tailored to meet your specific business needs. Our team of experienced developers can create web applications, mobile solutions, and integrate APIs to modernize your legacy systems.',
+        '本项目位于深圳龙华盛璟润府,涵盖生活、办公、公寓三大区域水泵房的智能化施工,包括供电系统、安防与智能控制系统建设。',
       benefits: [
-        'Customized solutions to fit your unique needs',
-        'Improved efficiency and productivity',
-        'Modernized legacy systems',
-        'Seamless API integration',
-        'Scalable and reliable applications',
+        '提升小区用水管理效率',
+        '安防智能化提升安全性',
+        '施工涵盖电力与控制系统',
+        '提升住宅配套智能化水平',
       ],
       specifications: [
-        'Full-stack development',
-        'Agile development methodologies',
-        'Cross-platform compatibility',
-        'Secure coding practices',
-        'Ongoing maintenance and support',
+        '区域:生活区、办公区、公寓区水泵房',
+        '施工内容:电力桥架、电缆、监控安装与调试',
+        '控制系统编程与调试',
+        '项目周期:2023-06-17 至 2023-02-07',
       ],
-    },
-  },
-  {
-    id: 'analytics-platform',
-    title: 'Analytics Platform',
-    description:
-      'Advanced analytics and reporting platform for data-driven decision making.',
-    icon: <ChartBar className='h-12 w-12 text-[#2C74B3] mb-4' />,
-    features: [
-      'Real-time analytics',
-      'Custom dashboards',
-      'Predictive modeling',
-      'Data visualization',
-    ],
-    details: {
-      overview:
-        'Our Analytics Platform provides advanced analytics and reporting capabilities to help you make data-driven decisions. With real-time analytics, custom dashboards, and predictive modeling, you can gain valuable insights into your business.',
-      benefits: [
-        'Data-driven decision making',
-        'Real-time insights',
-        'Customizable dashboards',
-        'Predictive modeling capabilities',
-        'Improved business performance',
-      ],
-      specifications: [
-        'Data integration from multiple sources',
-        'Advanced data visualization tools',
-        'Machine learning algorithms',
-        'Secure data storage',
-        'Scalable infrastructure',
-      ],
-    },
-  },
-  {
-    id: 'devops-automation',
-    title: 'DevOps Automation',
-    description:
-      'Streamline your development and deployment processes with our automation tools.',
-    icon: <Rocket className='h-12 w-12 text-[#2C74B3] mb-4' />,
-    features: [
-      'CI/CD pipelines',
-      'Infrastructure as code',
-      'Monitoring',
-      'Auto-scaling',
-    ],
-    details: {
-      overview:
-        'Our DevOps Automation tools streamline your development and deployment processes, enabling you to deliver software faster and more reliably. With CI/CD pipelines, infrastructure as code, and auto-scaling, you can automate your entire DevOps lifecycle.',
-      benefits: [
-        'Faster software delivery',
-        'Improved reliability',
-        'Reduced manual effort',
-        'Automated infrastructure management',
-        'Scalable and resilient systems',
-      ],
-      specifications: [
-        'Automated testing',
-        'Continuous integration and continuous deployment',
-        'Infrastructure as code',
-        'Real-time monitoring',
-        'Auto-scaling capabilities',
-      ],
-    },
-  },
-  {
-    id: 'data-warehouse',
-    title: 'Data Warehouse Solution',
-    description:
-      'Enterprise-grade data warehouse solution for comprehensive data management.',
-    icon: <Box className='h-12 w-12 text-[#2C74B3] mb-4' />,
-    features: [
-      'Data integration',
-      'ETL processes',
-      'Business intelligence',
-      'Data governance',
-    ],
-    details: {
-      overview:
-        'Our Data Warehouse Solution provides an enterprise-grade platform for comprehensive data management. With data integration, ETL processes, and business intelligence tools, you can consolidate and analyze your data to gain valuable insights.',
-      benefits: [
-        'Comprehensive data management',
-        'Improved data quality',
-        'Enhanced business intelligence',
-        'Streamlined ETL processes',
-        'Data governance and compliance',
-      ],
-      specifications: [
-        'Support for various data sources',
-        'Scalable data storage',
-        'Advanced analytics tools',
-        'Secure data access',
-        'Data governance framework',
-      ],
+      media: {
+        images: intelligentPumpImages,
+      },
     },
   },
 ];

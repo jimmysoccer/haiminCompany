@@ -1,10 +1,11 @@
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
+import { ContactInfo } from '@/constants/contact';
+import { CustomerComments } from '@/constants/comments';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -18,8 +19,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: 'Message Sent!',
-      description: "We'll get back to you as soon as possible.",
+      title: '提交成功',
+      description: '感谢您的留言，我们会尽快与您联系！',
     });
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
@@ -30,29 +31,6 @@ const Contact = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
-  const contactInfo = [
-    {
-      icon: <MapPin className='w-6 h-6' />,
-      title: '地址',
-      info: '上海市嘉定区天祝路377弄2号',
-    },
-    {
-      icon: <Phone className='w-6 h-6' />,
-      title: '联系电话',
-      info: '13918073922',
-    },
-    {
-      icon: <Mail className='w-6 h-6' />,
-      title: '邮箱',
-      info: '2302050660@qq.com',
-    },
-    // {
-    //   icon: <Clock className='w-6 h-6' />,
-    //   title: 'Business Hours',
-    //   info: 'Mon - Fri: 9:00 AM - 6:00 PM',
-    // },
-  ];
 
   return (
     <div className='min-h-screen pt-24 pb-16'>
@@ -67,7 +45,7 @@ const Contact = () => {
         <div className='grid md:grid-cols-2 gap-12'>
           <div>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8'>
-              {contactInfo.map((item, index) => (
+              {Object.values(ContactInfo).map((item, index) => (
                 <Card key={index} className='hover:shadow-lg transition-shadow'>
                   <CardContent className='p-6'>
                     <div className='flex items-center gap-4'>
@@ -137,6 +115,37 @@ const Contact = () => {
                 </form>
               </CardContent>
             </Card>
+          </div>
+        </div>
+
+        <div className='mt-16 text-center'>
+          <h2 className='text-3xl font-bold text-[#0A2647] mb-6'>我们的承诺</h2>
+          <p className='text-gray-600 max-w-3xl mx-auto'>
+            我们承诺在24小时内回复您的咨询, 确保您能及时获得所需的信息和支持。
+          </p>
+          <p className='text-gray-600 max-w-3xl mx-auto'>
+            我们期待与您建立长期的合作关系，共同推动数字化转型的成功。
+          </p>
+        </div>
+
+        <div className='mt-16'>
+          <h2 className='text-3xl font-bold text-[#0A2647] mb-6 text-center'>
+            客户评价
+          </h2>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {CustomerComments.map((testimonial, index) => (
+              <div
+                key={index}
+                className='p-6 border rounded-lg shadow-sm hover:shadow-lg transition-shadow'
+              >
+                <p className='text-gray-600 italic mb-4'>
+                  “{testimonial.quote}”
+                </p>
+                <p className='text-gray-800 font-semibold text-right'>
+                  — {testimonial.author}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

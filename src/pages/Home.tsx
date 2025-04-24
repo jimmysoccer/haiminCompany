@@ -10,6 +10,8 @@ import {
   Server,
   ChartBar,
 } from 'lucide-react';
+import { PROJECTS } from '@/constants/projects';
+import { NAV_MENU } from '@/constants/navBar';
 
 const Home = () => {
   return (
@@ -87,65 +89,35 @@ const Home = () => {
           </h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             {/* Enterprise Database Suite */}
-            <Card className='hover:shadow-lg transition-shadow'>
-              <CardHeader>
-                <Database className='h-12 w-12 text-[#2C74B3] mx-auto mb-4' />
-                <CardTitle className='text-xl text-center text-[#0A2647]'>
-                  Enterprise Database Suite
-                </CardTitle>
-              </CardHeader>
-              <CardContent className='text-center'>
-                <p className='text-gray-600 mb-6'>
-                  High-performance database management system with real-time
-                  analytics.
-                </p>
-                <Button asChild>
-                  <Link to='/products'>Learn More</Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Cloud Migration Tool */}
-            <Card className='hover:shadow-lg transition-shadow'>
-              <CardHeader>
-                <Server className='h-12 w-12 text-[#2C74B3] mx-auto mb-4' />
-                <CardTitle className='text-xl text-center text-[#0A2647]'>
-                  Cloud Migration Tool
-                </CardTitle>
-              </CardHeader>
-              <CardContent className='text-center'>
-                <p className='text-gray-600 mb-6'>
-                  Seamless data migration solution with zero downtime guarantee.
-                </p>
-                <Button asChild>
-                  <Link to='/products'>Learn More</Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Analytics Platform */}
-            <Card className='hover:shadow-lg transition-shadow'>
-              <CardHeader>
-                <ChartBar className='h-12 w-12 text-[#2C74B3] mx-auto mb-4' />
-                <CardTitle className='text-xl text-center text-[#0A2647]'>
-                  Analytics Platform
-                </CardTitle>
-              </CardHeader>
-              <CardContent className='text-center'>
-                <p className='text-gray-600 mb-6'>
-                  Advanced analytics and reporting platform for data-driven
-                  decisions.
-                </p>
-                <Button asChild>
-                  <Link to='/products'>Learn More</Link>
-                </Button>
-              </CardContent>
-            </Card>
+            {PROJECTS.slice(0, 3).map((project) => (
+              <Card className='hover:shadow-lg transition-shadow'>
+                <CardHeader>
+                  <div className='flex justify-center mb-4'>
+                    <img
+                      src={project.details?.media?.images[0] || ''}
+                      alt={project.title}
+                      className='rounded-lg object-cover w-full max-h-80'
+                    />
+                  </div>
+                  <CardTitle className='text-xl text-center text-[#0A2647]'>
+                    {project.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className='text-center'>
+                  <p className='text-gray-600 mb-6'>{project.description}</p>
+                  <Button asChild>
+                    <Link to={`${NAV_MENU.projects.path}/${project.id}`}>
+                      查看详情
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
           <div className='text-center mt-12'>
             <Button variant='outline' asChild size='lg'>
-              <Link to='/products'>
+              <Link to={NAV_MENU.projects.path}>
                 查看全部项目 <ChevronRight className='ml-2 h-5 w-5' />
               </Link>
             </Button>
