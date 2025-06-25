@@ -1,33 +1,73 @@
-# haimin Company
+# Welcome to your Lovable project
 
-This is the repository for haimin company website. \
-The website will be deployed on tencent cloud. \
-以获得上海备案。
+## Project info
 
-## Tech used
-1. React
-2. Bootstrap
-3. LottieFiles
-4. react-hot-toast
+**URL**: https://lovable.dev/projects/b1e6f181-8862-474f-8695-6d982c6da858
 
-## Available Scripts
+## How can I edit this code?
 
-In the project directory, you can run:
+There are several ways of editing your application.
 
-### `npm start`
+**Use Lovable**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Simply visit the [Lovable Project](https://lovable.dev/projects/b1e6f181-8862-474f-8695-6d982c6da858) and start prompting.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Changes made via Lovable will be committed automatically to this repo.
 
-### `npm run deploy`
+**Use your preferred IDE**
 
-Deploy the app to https://jimmysoccer.github.io/haiminCompany.
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-## References
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-https://about.google/ \
-https://info.gartnerdigitalmarkets.com/axero-gdm-lp/?category=Intranet&utm_source=capterra \
-https://c1953038906.scd.wezhan.cn/sy
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
+
+**Edit a file directly in GitHub**
+
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/b1e6f181-8862-474f-8695-6d982c6da858) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
