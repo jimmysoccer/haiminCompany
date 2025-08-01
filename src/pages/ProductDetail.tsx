@@ -76,16 +76,47 @@ const ProductDetail = () => {
           </Button>
         </div>
 
+        <div className='w-100 mb-8'>
+          <div className='flex justify-center md:justify-center mb-6 items-center gap-5'>
+            <div>{product.icon}</div>
+            <div className=''>
+              <h1 className='text-4xl font-bold text-[#0A2647] mb-4'>
+                {product.title}
+              </h1>
+              <p className='text-xl text-gray-600 mb-8'>
+                {product.description}
+              </p>
+            </div>
+          </div>
+          <Card>
+            <CardContent className='p-6'>
+              <h2 className='text-2xl font-semibold text-[#0A2647] mb-4'>
+                项目图集
+              </h2>
+              <Carousel className='w-full'>
+                <CarouselContent>
+                  {product.details.media.images.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <AspectRatio ratio={16 / 9}>
+                        <img
+                          src={image}
+                          alt={`${product.title} showcase ${index + 1}`}
+                          className='rounded-lg object-cover w-full h-full cursor-pointer'
+                          onClick={() => setSelectedImageIndex(index)}
+                        />
+                      </AspectRatio>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            </CardContent>
+          </Card>
+        </div>
+
         <div className='grid md:grid-cols-2 gap-12'>
           <div>
-            <div className='flex justify-center md:justify-start mb-6'>
-              {product.icon}
-            </div>
-            <h1 className='text-4xl font-bold text-[#0A2647] mb-4'>
-              {product.title}
-            </h1>
-            <p className='text-xl text-gray-600 mb-8'>{product.description}</p>
-
             <Card className='mb-8'>
               <CardContent className='p-6'>
                 <h2 className='text-2xl font-semibold text-[#0A2647] mb-4'>
@@ -105,32 +136,6 @@ const ProductDetail = () => {
             <div className='space-y-8'>
               {product.details?.media && (
                 <>
-                  <Card>
-                    <CardContent className='p-6'>
-                      <h2 className='text-2xl font-semibold text-[#0A2647] mb-4'>
-                        项目图集
-                      </h2>
-                      <Carousel className='w-full'>
-                        <CarouselContent>
-                          {product.details.media.images.map((image, index) => (
-                            <CarouselItem key={index}>
-                              <AspectRatio ratio={16 / 9}>
-                                <img
-                                  src={image}
-                                  alt={`${product.title} showcase ${index + 1}`}
-                                  className='rounded-lg object-cover w-full h-full cursor-pointer'
-                                  onClick={() => setSelectedImageIndex(index)}
-                                />
-                              </AspectRatio>
-                            </CarouselItem>
-                          ))}
-                        </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
-                      </Carousel>
-                    </CardContent>
-                  </Card>
-
                   {product.details.media.video && (
                     <Card>
                       <CardContent className='p-6'>
